@@ -1,0 +1,87 @@
+<?php 
+include "include/header.php";
+include "include/topbar.php";
+include "include/sidebar.php";
+include_once("config/connection.php");
+
+$query = "SELECT * FROM tb_ProductType ORDER BY id DESC";
+$result = mysqli_query($conn, $query);
+
+?>
+
+<div class="main-content">
+    <section class="section">
+      <div class="section-body">   
+        <div class="row">
+          <div class="col-12">
+          <a href="#addnewcategory" class="btn btn-success" data-toggle="modal" style="font-size:15px"><i class="fas fa-edit"></i> ເພີ່ມຂໍ້ມູນປະເພດສິນຄ້າ</a>
+            <div class="card">
+              <div class="card-header">
+                <h4>ຂໍ້ມູນປະເພດສິນຄ້າ</h4>
+                <div class="card-header-action">
+                  <form>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search">
+                      <div class="input-group-btn">
+                        <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="card-body p-0">
+                <div class="table-responsive">
+                  <table class="table table-striped" id="sortable-table">
+                    <thead>
+                      <tr>
+                        <th class="text-center">
+                          <i class="fas fa-th"></i>
+                        </th>
+                        <th>ລະຫັດປະເພດສິນຄ້າ</th>
+                        <th>ຊື່ປະເພດສິນຄ້າ</th>
+                        <th>ວັນທີ່ເພີ່ມ</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                      if (mysqli_num_rows($result) > 0) {
+                        $sn=1;
+                        while($row = mysqli_fetch_assoc($result)) {
+                      ?>
+                      <tr>
+                        <td>
+                          <div class="sort-handler">
+                            <i class="fas fa-th"></i>
+                          </div>
+                        </td>
+                        <td>000<?php echo $row['id']; ?></td>
+                        
+                        <td>
+                        <div><?php echo $row['typename']; ?></div>
+                        </td>
+                        <td>
+                          <div class="badge badge-success"><?php echo $row['created_date']; ?></div>
+                        </td>
+                        <td><a href="category-edit.php?id=<?php echo $row["id"]; ?>" class="btn btn-primary" style="font-size:15px"><i class="fas fa-edit"></i> ແກ້ໄຂ</a> <a href="category-delete.php?id=<?php echo $row["id"]; ?>" class="btn btn-danger" style="font-size:15px"><i class="far fa-trash-alt"></i> ລຶບ</a></td>
+                      </tr>
+                      <?php
+                        $sn++;}} else { ?>
+                          <tr>
+                          <td colspan="8">ຍັງບໍມີຂໍ້ມູນ</td>
+                          </tr>
+                      <?php } ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <?php include('category-add.php') ?>
+<?php 
+include "include/footer.php";
+?>
