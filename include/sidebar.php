@@ -7,7 +7,7 @@
     <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="index.php"> <img alt="image" src="assets/img/logo1.png" class="header-logo" /> 
+            <a href="dashboard.php"> <img alt="image" src="assets/img/logo1.png" class="header-logo" /> 
             <!-- <span class="logo-name">ຮ້ານສຸນິດ</span> -->
             </a>
           </div>

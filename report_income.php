@@ -19,13 +19,12 @@ include_once("config/connection.php");
                       <lable name="from">ຫາ</lable>
                       <input type="date" id="to" name="to_date"/>
                       <input type="submit" value="ຄົ້ນຫາ" class="btn btn-primary">
-                      <button class="btn btn-warning" type="submit">ປຣິນໃບລາຍງານ</button>
                   </form>
                 </div>
               </div>
               <div class="card-body p-0">
                 <div class="table-responsive">
-                  <table class="table table-striped" id="sortable-table">
+                  <table class="table table-striped table-hover" id="tableExport" style="width:100%;">
                     <thead>
                       <tr>
                         <th class="text-center">
@@ -87,23 +86,6 @@ include_once("config/connection.php");
       </div>
     </section>
   </div>
-  <script>
-    $(function () {
-    $('button[type="submit"]').click(function () {
-        var pageTitle = 'ຮ້ານ ສຸນິດຕາ',
-            stylesheet = '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css',
-            win = window.open('', 'Print', 'width=500,height=300');
-        win.document.write('<html><head><title>' + pageTitle + '</title>' +
-            '<link rel="stylesheet" href="' + stylesheet + '">' +
-            '</head><body>' + $('.table')[0].outerHTML + '</body></html>');
-        win.document.close();
-        win.print();
-        win.close();
-        return false;
-    });
-});
-  </script>
-<?php include('user-add.php') ?>
 <?php 
 include "include/footer.php";
 ?>

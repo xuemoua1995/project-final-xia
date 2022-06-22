@@ -28,7 +28,7 @@ include "include/sidebar.php";
       <div class="section-body">   
         <div class="row">
           <div class="col-12">
-          <a href="#addnew" class="btn btn-success" data-toggle="modal" style="font-size:15px"><i class="fas fa-edit"></i> ເພີ່ມຂໍ້ມູນຜູ້ໃຊ້</a>
+          <a href="#addnewuser" class="btn btn-success" data-toggle="modal" style="font-size:15px"><i class="fas fa-edit"></i> ເພີ່ມຂໍ້ມູນຜູ້ໃຊ້</a>
             <div class="card">
               <div class="card-header">
                 <h4>ຂໍ້ມູນຜູ້ໃຊ້</h4>
@@ -56,7 +56,6 @@ include "include/sidebar.php";
                         <th>ຊື່ຜູ້ໃຊ້</th>
                         <th>ສິດທິ</th>
                         <th>ວັນທີ່ເພີ່ມ</th>
-                        <th>ວັນທີ່ອັບເດດ</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -91,7 +90,7 @@ include "include/sidebar.php";
                           <td>
                             <a href="user-edit.php?id=<?php echo $row["id"]; ?>" class='btn btn-primary' style='font-size:15px'><i class='fas fa-edit'></i> ແກ້ໄຂ</a> 
                             <a href="user-delete.php?id=<?php echo $row["id"]; ?>" class='btn btn-danger'  style='font-size:15px'><i class='far fa-trash-alt'></i> ລຶບ</a> 
-                            <a href='#' class='btn btn-warning' style='font-size:15px'><i class='fas fa-eye'></i> ເບິ່ງລາຍລະອຽດ</a>
+                            <a href="user-detail.php?id=<?php echo $row["id"]; ?>" class='btn btn-warning' style='font-size:15px'><i class='fas fa-eye'></i></a>
                           </td>
                         </tr>
                         <?php $count++; } ?>

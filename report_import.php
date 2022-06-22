@@ -2,6 +2,7 @@
 include "include/header.php";
 include "include/topbar.php";
 include "include/sidebar.php";
+
 include_once("config/connection.php");
 
 ?>
@@ -15,29 +16,30 @@ include_once("config/connection.php");
               <div class="card-header">
                 <h4>ລາຍງານຂໍ້ມູນນຳເຂົ້າສິນຄ້າ</h4>
                 <div>
-                <form action="" methods="POST">
+                  <form action="" methods="POST">
                       <input type="date" id="from" name="from_date"/>
                       <lable name="from">ຫາ</lable>
                       <input type="date" id="to" name="to_date"/>
                       <input type="submit" value="ຄົ້ນຫາ" class="btn btn-primary">
-                      <button class="btn btn-warning" type="submit">ປຣິນໃບລາຍງານ</button>
                   </form>
                 </div>
               </div>
               <div class="card-body p-0">
                 <div class="table-responsive">
-                  <table class="table table-striped" id="sortable-table">
+                
+                  <table class="table table-striped table-hover" id="tableExport" style="width:100%;">
                     <thead>
                       <tr>
                         <th class="text-center">
                           <i class="fas fa-th"></i>
                         </th>
-                        <th>ລະຫັດສິນຄ້າ</th>
+                        <th>ລະຫັດ</th>
                         <th>ຊື່ສິນຄ້າ</th>
-                        <th>ລະຫັດບາໂຄດ</th>
+                        <th>ບາໂຄດ</th>
                         <th>ປະເພດສິນຄ້າ</th>
                         <th>ຈຳນວນ</th>
-                        <th>ລາຄາ</th>
+                        <th>ລາຄາຊື້</th>
+                        <th>ລາຄາຂາຍ</th>
                         <th>ວັນທີ່ເພີ່ມ</th>
                       </tr>
                     </thead>
@@ -100,21 +102,41 @@ include_once("config/connection.php");
     </section>
   </div>
   <script>
-    $(function () {
-    $('button[type="submit"]').click(function () {
-        var pageTitle = 'ຮ້ານ ສຸນິດຕາ',
-            stylesheet = '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css',
-            win = window.open('', 'Print', 'width=500,height=300');
-        win.document.write('<html><head><title>' + pageTitle + '</title>' +
-            '<link rel="stylesheet" href="' + stylesheet + '">' +
-            '</head><body>' + $('.table')[0].outerHTML + '</body></html>');
-        win.document.close();
-        win.print();
-        win.close();
-        return false;
-    });
-});
+  $( function() {
+    var dateFormat = "dd/mm/yy",
+      from = $( "#from" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 1,
+		  dateFormat:"dd/mm/yy",
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#to" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 1,
+		dateFormat:"dd/mm/yy",
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+ 
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+ 
+      return date;
+    }
+  } );
   </script>
 <?php 
 include "include/footer.php";
 ?>
+

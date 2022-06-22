@@ -1,27 +1,32 @@
 <!-- Add New -->
 <?php
-include("config/connection.php");
+include_once("config/connection.php");
 
 if(isset($_POST['save'])){
     $unit_name = $_POST['unit_name'];
 
+
     $sql = "INSERT INTO tb_unit (unit_name) VALUES ('$unit_name')";
-    // $res = mysqli_query($conn, $sql);
-    // $unit_name ="";
-    if(mysqli_query($conn, $sql)){
-        echo "<script>('add data successfully!')</script>";
-        $unit_name = "";
-        header("Location: unitprice.php");
-    } else{
-        echo "ERROR: Hush! Sorry $sql. "
-            . mysqli_error($conn);
+
+    //use for MySQLi OOP
+    if($conn->query($sql)){
+        $_SESSION['success'] = 'Document added successfully';
+        header('location: unitprice.php');
     }
-     
-    // Close connection
-    mysqli_close($conn);
+    
+    else{
+        $_SESSION['error'] = 'can not add Document';
+        header('location: unitprice.php');
+    }
+}
+else{
+    $_SESSION['error'] = 'Fill up add form Document';
+  
 }
 
 ?>
+
+
 <div class="modal fade" id="addnew" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">

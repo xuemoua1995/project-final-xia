@@ -26,7 +26,7 @@ session_start();
                           $sql = "SELECT * FROM tb_ProductItem";
                           $query = mysqli_query($conn,$sql);
                           if($row=mysqli_num_rows($query)){
-                              echo '<h2 class="mb-3 font-20">'.$row.'</h2>';
+                              echo '<h2 class="mb-3 font-20" style="color:blue">'.$row.'</h2>';
                           }
                            
                           ?>
@@ -56,7 +56,7 @@ session_start();
                           $sql = "SELECT * FROM tb_user";
                           $query = mysqli_query($conn,$sql);
                           if($row=mysqli_num_rows($query)){
-                              echo '<h2 class="mb-3 font-20">'.$row.'</h2>';
+                              echo '<h2 class="mb-3 font-20" style="color:blue">'.$row.'</h2>';
                           }
                            
                           ?>
@@ -85,7 +85,7 @@ session_start();
                           $sql = "SELECT * FROM tb_ProductType";
                           $query = mysqli_query($conn,$sql);
                           if($row=mysqli_num_rows($query)){
-                              echo '<h2 class="mb-3 font-20">'.$row.'</h2>';
+                              echo '<h2 class="mb-3 font-20" style="color:blue">'.$row.'</h2>';
                           }
                            
                           ?>
@@ -112,8 +112,12 @@ session_start();
                         <div class="card-content">
                           <h5 class="font-18">ຈຳນວນລາຍໄດ້</h5>
                           <br>
-                          <h2 class="mb-3 font-18">8,697,000 ກີບ</h2>
-                          <!-- <p class="mb-0"><span class="col-green">42%</span> Increase</p> -->
+                          <?php
+                          $query = mysqli_query($conn, "SELECT SUM(sale_price) AS total FROM `tb_ProductItem`") or die(mysqli_error());
+
+                          $fetch = mysqli_fetch_array($query);
+                          ?>
+                          <h2 class="mb-3 font-18" style="color:blue"><?php echo number_format($fetch['total'])?> ກີບ</h2>
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
@@ -177,7 +181,7 @@ session_start();
                 </div>
                 <div class="card-body p-0">
                   <div class="table-responsive">
-                    <table class="table table-striped">
+                    <table  class="table table-striped table-hover" style="width:100%;">
                     <thead>
                       <tr>
                         <th class="text-center">

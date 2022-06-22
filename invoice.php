@@ -15,6 +15,7 @@ include_once("config/connection.php");
                               <div class="col-lg-12">
                                    <div class="invoice-title">
                                         <h2>ໃບບິນ</h2>
+                                        <br>
                                         <?php
                                              $dt = new DateTime();
                                               echo $dt->format('ວັນທີ່ສັ່ງຊື້: Y-m-d H:i:s');
@@ -44,9 +45,9 @@ include_once("config/connection.php");
                                                   <tr>
                                                        <th data-width="40"><?=$i?></th>
                                                        <th><?=$pro['name']?></th>
-                                                       <th class="text-center"><?=$re['price']?></th>
+                                                       <th class="text-center"><?=$re['price']?> ກີບ</th>
                                                        <th class="text-center"><?=$re['qty']?></th>
-                                                       <th class="text-right"><?=$re['price'] * $re['qty']?></th>
+                                                       <th class="text-right"><?=$re['price'] * $re['qty']?> ກີບ</th>
                                                   </tr>
                                              <?php
                                              $i++;

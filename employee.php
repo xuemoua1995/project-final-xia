@@ -12,7 +12,7 @@ include_once("config/connection.php");
       <div class="section-body">   
         <div class="row">
           <div class="col-12">
-          <a href="#addnew" class="btn btn-success" data-toggle="modal" style="font-size:15px"><i class="fas fa-edit"></i> ເພີ່ມຂໍ້ມູນພະນັກງານ</a>
+          <a href="#addnewemployee" class="btn btn-success" data-toggle="modal" style="font-size:15px"><i class="fas fa-edit"></i> ເພີ່ມຂໍ້ມູນພະນັກງານ</a>
             <div class="card">
               <div class="card-header">
                 <h4>ຂໍ້ມູນພະນັກງານ</h4>

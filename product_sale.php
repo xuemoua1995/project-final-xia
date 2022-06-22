@@ -71,6 +71,7 @@ $bc = $_GET['bc'];
                       </td>
                     </tr>
                    
+                   
                   <?php
                   }
                   ?>
@@ -87,7 +88,7 @@ $bc = $_GET['bc'];
             </div>
             
           </div>
-          <a href="invoice.php" class="btn btn-primary" style="font-size:15px"><i class="fas fa-edit"></i> ອອກໃບບິນ</a>
+          <a href="invoice.php" onclick="del('<?=$re['id']?>')" class="btn btn-primary" style="font-size:15px"><i class="fas fa-edit"></i> ອອກໃບບິນ</a>
         </div>
       </div>
     </div>

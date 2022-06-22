@@ -11,7 +11,7 @@ include_once("config/connection.php");
       <div class="section-body">   
         <div class="row">
           <div class="col-12">
-          <a href="#addnew" class="btn btn-success" data-toggle="modal" style="font-size:15px"><i class="fas fa-edit"></i> ເພີ່ມຂໍ້ມູນສິນຄ້າ</a>
+          <a href="#addnewproduct" class="btn btn-success" data-toggle="modal" style="font-size:15px"><i class="fas fa-edit"></i> ເພີ່ມຂໍ້ມູນສິນຄ້າ</a>
             <div class="card">
               <div class="card-header">
                 <h4>ຂໍ້ມູນສິນຄ້າ</h4>
@@ -98,7 +98,7 @@ include_once("config/connection.php");
       </div>
     </section>
   </div>
-<?php include('product-add.php') ?>
+  <?php include('product-add.php') ?>
 <?php 
 include "include/footer.php";
 ?>

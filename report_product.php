@@ -21,22 +21,22 @@ include_once("config/connection.php");
                       <lable name="from">ຫາ</lable>
                       <input type="date" id="to" name="to_date"/>
                       <input type="submit" value="ຄົ້ນຫາ" class="btn btn-primary">
-                      <button class="btn btn-warning" type="submit">ປຣິນໃບລາຍງານ</button>
+                      <!-- <button class="btn btn-warning" type="submit">ປຣິນໃບລາຍງານ</button> -->
                   </form>
                 </div>
               </div>
               <div class="card-body p-0">
                 <div class="table-responsive">
                 
-                  <table class="table table-striped" id="sortable-table">
+                  <table class="table table-striped table-hover" id="tableExport" style="width:100%;">
                     <thead>
                       <tr>
                         <th class="text-center">
                           <i class="fas fa-th"></i>
                         </th>
-                        <th>ລະຫັດສິນຄ້າ</th>
+                        <th>ລະຫັດ</th>
                         <th>ຊື່ສິນຄ້າ</th>
-                        <th>ລະຫັດບາໂຄດ</th>
+                        <th>ບາໂຄດ</th>
                         <th>ປະເພດສິນຄ້າ</th>
                         <th>ຈຳນວນ</th>
                         <th>ລາຄາຊື້</th>
@@ -103,22 +103,6 @@ include_once("config/connection.php");
     </section>
   </div>
   <script>
-    $(function () {
-    $('button[type="submit"]').click(function () {
-        var pageTitle = 'ຮ້ານ ສຸນິດຕາ',
-            stylesheet = '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css',
-            win = window.open('', 'Print', 'width=500,height=300');
-        win.document.write('<html><head><title>' + pageTitle + '</title>' +
-            '<link rel="stylesheet" href="' + stylesheet + '">' +
-            '</head><body>' + $('.table')[0].outerHTML + '</body></html>');
-        win.document.close();
-        win.print();
-        win.close();
-        return false;
-    });
-  });
-  </script>
-  <script>
   $( function() {
     var dateFormat = "dd/mm/yy",
       from = $( "#from" )
@@ -153,21 +137,6 @@ include_once("config/connection.php");
     }
   } );
   </script>
-  <script  type="text/javascript">
-    $(document).ready(function() {
-    jQuery('#Export to excel').bind("click", function() {
-    var target = $(this).attr('id');
-    switch(target) {
-      case 'export-to-excel' :
-      $('#hidden-type').val(target);
-      //alert($('#hidden-type').val());
-      $('#export-form').submit();
-      $('#hidden-type').val('');
-      break
-    }
-    });
-    });
-</script>
 <?php include('product-add.php') ?>
 <?php 
 include "include/footer.php";

@@ -36,7 +36,7 @@ $row = mysqli_fetch_assoc($result);
                $id=$_REQUEST['id'];
                $fullname =$_REQUEST['fullname'];
                $birthday = date("Y-m-d H:i:s");
-               $gender_array = explode(",", $result['gender']);
+               $gender = $_REQUEST['gender'];
                $address =$_REQUEST['address'];
                $phone =$_REQUEST['phone'];
                

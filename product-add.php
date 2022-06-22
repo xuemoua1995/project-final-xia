@@ -1,8 +1,4 @@
 <!-- Add New -->
-<?php 
-    include("config/connection.php");
-    $option = mysqli_query($conn, "SELECT * FROM tb_ProductType");
-?>
 
 <?php
 
@@ -34,14 +30,14 @@ else{
   
 }
 
-
 ?>
+
 <div class="modal fade" id="addnewproduct" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div style="text-align: center; padding-top:10px;">
 				<div>
-					<h3>ເພີ່ມຂໍ້ມູນສິນຄ້າ</h3>
+                <h3>ເພີ່ມຂໍ້ມູນສິນຄ້າ</h3>
 				</div>
 			</div>
 			<div class="modal-body">
@@ -64,7 +60,9 @@ else{
                                 <p>ຊື່ປະເພດສິນຄ້າ</p>
                                 <select name="typename" class="form-control" required>
                                    <option>ກະລຸນາເລືອກປະເພດສິນຄ້າກ່ອນ</option>
-                                   <?php foreach($option as $key => $value){ ?>
+                                   <?php 
+                                    $option = mysqli_query($conn, "SELECT * FROM tb_ProductType");
+                                   foreach($option as $key => $value){ ?>
                                         <option value="<?=$value['typename'] ;?>"><?=$value['typename'] ;?></option>
                                     <?php } ?>
                                    </select>
@@ -88,6 +86,7 @@ else{
                     <button type="submit" name="save" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> ບັນທຶກ</a>
                     </form>
 			    </div>
+			</div>
 			</div>
 		</div>
 	</div>

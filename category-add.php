@@ -1,27 +1,30 @@
 <!-- Add New -->
 <?php
-include("config/connection.php");
+// include("config/connection.php");
 
-if(isset($_POST['save'])){
-    $name = $_POST['typename'];
+// if(isset($_POST['save'])){
+//     $typename = $_POST['typename'];
 
-    $sql = "INSERT INTO tb_ProductType (typename) VALUES ('$name')";
-    // $res = mysqli_query($conn, $sql);
-    // $unit_name ="";
-    if(mysqli_query($conn, $sql)){
-        header("Location:category.php");
-    } else{
-        echo "ERROR: Hush! Sorry $sql. "
-            . mysqli_error($conn);
-        header("Location:category.php");
-    }
-     
-    // Close connection
-    mysqli_close($conn);
-}
+
+//     $sql = "INSERT INTO tb_ProductType (typename) VALUES ('$typename')";
+
+//     //use for MySQLi OOP
+//     if($conn->query($sql)){
+//         $_SESSION['success'] = ' Add category successfully';
+//         header("Location:category.php");
+//     }
+    
+//     else{
+//         $_SESSION['error'] = 'can not add Employee';
+//         header("Location:category.php");
+//     }
+// }
+// else{
+//     $_SESSION['error'] = 'Fill up add form category';
+// }
 
 ?>
-<div class="modal fade" id="addnew" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="addnewcategory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div style="text-align: center; padding-top:10px;">
