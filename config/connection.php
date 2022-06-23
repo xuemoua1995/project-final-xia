@@ -6,7 +6,7 @@ $database = "hVQWBJTceN";
 $port = 3306;
 
 try{
-     // Create connection
+     // Create connection database
 $conn =  mysqli_connect($server, $username, $password, $database,$port);
 
 // Check connection
