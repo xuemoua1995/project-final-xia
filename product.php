@@ -15,20 +15,10 @@ include_once("config/connection.php");
             <div class="card">
               <div class="card-header">
                 <h4>ຂໍ້ມູນສິນຄ້າ</h4>
-                <div class="card-header-action">
-                  <form>
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search">
-                      <div class="input-group-btn">
-                        <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
               </div>
               <div class="card-body p-0">
                 <div class="table-responsive">
-                  <table class="table table-striped" id="sortable-table">
+                  <table class="table table-striped table-hover" id="save-stage" style="width:100%;">
                     <thead>
                       <tr>
                         <th class="text-center">
@@ -82,8 +72,8 @@ include_once("config/connection.php");
                             <div class='badge badge-success'><?php echo $row["created_date"]; ?></div>
                           </td>
                           <td>
-                            <a href="product-edit.php?id=<?php echo $row["id"]; ?>" class='btn btn-primary' style='font-size:15px'><i class='fas fa-edit'></i> ແກ້ໄຂ</a> 
-                            <a href="product-delete.php?id=<?php echo $row["id"]; ?>" class='btn btn-danger' style='font-size:15px'><i class='far fa-trash-alt'></i> ລຶບ</a> 
+                            <a href="product-edit.php?id=<?php echo $row["id"]; ?>" class='btn btn-primary' style='font-size:15px'><i class='fas fa-edit'></i></a> 
+                            <a href="product-delete.php?id=<?php echo $row["id"]; ?>" class='btn btn-danger' style='font-size:15px'><i class='far fa-trash-alt'></i></a> 
                             <a href="product-detail.php?id=<?php echo $row["id"]; ?>" class='btn btn-warning' style='font-size:15px'><i class='fas fa-eye'></i></a>
                           </td>
                         </tr>

@@ -1,27 +1,27 @@
 <!-- Add New -->
 <?php
-// include("config/connection.php");
+include_once("config/connection.php");
 
-// if(isset($_POST['save'])){
-//     $typename = $_POST['typename'];
+if(isset($_POST['save'])){
+    $typename = $_POST['typename'];
 
 
-//     $sql = "INSERT INTO tb_ProductType (typename) VALUES ('$typename')";
+    $sql = "INSERT INTO tb_ProductType (typename) VALUES ('$typename')";
 
-//     //use for MySQLi OOP
-//     if($conn->query($sql)){
-//         $_SESSION['success'] = ' Add category successfully';
-//         header("Location:category.php");
-//     }
+    //use for MySQLi OOP
+    if($conn->query($sql)){
+        $_SESSION['success'] = ' Add category successfully';
+        header("Location:category.php");
+    }
     
-//     else{
-//         $_SESSION['error'] = 'can not add Employee';
-//         header("Location:category.php");
-//     }
-// }
-// else{
-//     $_SESSION['error'] = 'Fill up add form category';
-// }
+    else{
+        $_SESSION['error'] = 'can not add category';
+        header("Location:category.php");
+    }
+}
+else{
+    $_SESSION['error'] = 'Fill up add form category';
+}
 
 ?>
 <div class="modal fade" id="addnewcategory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

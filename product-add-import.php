@@ -9,11 +9,12 @@ if(isset($_POST['save'])){
     $name = $_POST['name'];
     $barcode = $_POST['barcode'];
     $typename = $_POST['typename'];
+    $qty = $_POST['qty'];
     $buy_price = $_POST['buy_price'];
     $sale_price = $_POST['sale_price'];
 
 
-    $sql = "INSERT INTO tb_ProductItem (name, barcode, typename, buy_price, sale_price) VALUES ('$name', '$barcode', '$typename', '$buy_price','$sale_price')";
+    $sql = "INSERT INTO tb_ProductItem (name, barcode, typename, qty, buy_price, sale_price) VALUES ('$name', '$barcode', '$typename', '$qty', '$buy_price','$sale_price')";
 
     //use for MySQLi OOP
     if($conn->query($sql)){
@@ -68,6 +69,12 @@ else{
                                         }
                                     ?>
                                    </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-12 mb-3">
+                                <p>ຈຳນວນ</p>
+                                <input type="text" name="qty" class="form-control" required />
                             </div>
                         </div>
                         <div class="form-row">

@@ -33,11 +33,12 @@ $row = mysqli_fetch_assoc($result);
                $name =$_REQUEST['name'];
                $barcode =$_REQUEST['barcode'];
                $typename =$_REQUEST['typename'];
+               $qty =$_REQUEST['qty'];
                $buy_price =$_REQUEST['buy_price'];
                $sale_price =$_REQUEST['sale_price'];
                
                $update="UPDATE tb_ProductItem set name='".$name."',
-               barcode='".$barcode."', typename='".$typename."',
+               barcode='".$barcode."', typename='".$typename."', qty='".$qty."',
                buy_price='".$buy_price."', sale_price='".$sale_price."' where id='".$id."'";
              
                mysqli_query($conn, $update) or die(mysqli_error());
@@ -75,6 +76,13 @@ $row = mysqli_fetch_assoc($result);
                               <option value="<?php echo $rows['typename']; ?>"<?php if($row['typename'] == $rows['typename']) echo 'selected="selected"'; ?>><?php echo $rows['typename']; ?></option>
                               <?php endforeach;?>
                               </select>
+                         </div>
+                         <div class="col-12 mb-3">
+                              <p style="font-size:15px">ຈຳນວນ</p>
+                              <input type="text" name="qty" value="<?php echo $row['qty'];?>" class="form-control"  required />
+                              <div class="invalid-feedback" style="font-size:15px">
+                              ກະລຸນາປ້ອນລາຄາຊື້
+                              </div>
                          </div>
                          <div class="col-12 mb-3">
                               <p style="font-size:15px">ລາຄາຊື້</p>

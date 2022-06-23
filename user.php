@@ -1,26 +1,25 @@
-<?php
-  if(isset($_GET['id'])){
-		$sql = "DELETE FROM tb_user WHERE id = '".$_GET['id']."'";
 
-		//use for MySQLi OOP
-		if($conn->query($sql)){
-			$_SESSION['success'] = 'Document deleted successfully';
-		}
-		
-		else{
-			$_SESSION['error'] = 'Something went wrong in deleting Document';
-		}
-	}
-	else{
-		$_SESSION['error'] = 'Select Document to delete first';
-	}
-?>
 
 <?php 
 include "include/header.php";
 include "include/topbar.php";
 include "include/sidebar.php";
 
+if(isset($_GET['id'])){
+  $sql = "DELETE FROM tb_user WHERE id = '".$_GET['id']."'";
+
+  //use for MySQLi OOP
+  if($conn->query($sql)){
+    $_SESSION['success'] = 'Document deleted successfully';
+  }
+  
+  else{
+    $_SESSION['error'] = 'Something went wrong in deleting Document';
+  }
+}
+else{
+  $_SESSION['error'] = 'Select Document to delete first';
+}
 
 ?>
 <div class="main-content">
@@ -32,20 +31,10 @@ include "include/sidebar.php";
             <div class="card">
               <div class="card-header">
                 <h4>ຂໍ້ມູນຜູ້ໃຊ້</h4>
-                <div class="card-header-action">
-                  <form>
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search">
-                      <div class="input-group-btn">
-                        <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
               </div>
               <div class="card-body p-0">
                 <div class="table-responsive">
-                  <table class="table table-striped" id="sortable-table">
+                  <table class="table table-striped table-hover" id="save-stage" style="width:100%;">
                     <thead>
                       <tr>
                         <th class="text-center">
@@ -106,6 +95,3 @@ include "include/sidebar.php";
   </div>
 
 <?php include('user-add.php') ?>
-<?php 
-include ("include/footer.php");
-?>

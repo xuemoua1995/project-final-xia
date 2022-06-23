@@ -141,28 +141,28 @@ session_start();
                       <div class="row mb-0">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                           <div class="list-inline text-center">
-                            <div class="list-inline-item p-r-30"><i data-feather="arrow-up-circle"
-                                class="col-green"></i>
+                            <div class="list-inline-item p-r-30">
+                            <i class="fas fa-signal" style="font-size:30px; color:red"></i>
                               <h5 class="m-b-0">675,000 ກີບ</h5>
-                              <p class="text-muted font-18 m-b-0">ລາຍໄດ້ປະຈຳອາທິດ</p>
+                              <p class="text-muted font-16 m-b-0" style="color:red">ລາຍໄດ້ປະຈຳອາທິດ</p>
                             </div>
                           </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                           <div class="list-inline text-center">
-                            <div class="list-inline-item p-r-30"><i data-feather="arrow-down-circle"
-                                class="col-orange"></i>
+                            <div class="list-inline-item p-r-30">
+                            <i class="fas fa-signal" style="font-size:30px; color:blue"></i>
                               <h5 class="m-b-0">1,587,000 ກີບ</h5>
-                              <p class="text-muted font-19 m-b-0">ລາຍໄດ້ປະຈຳເດືອນ</p>
+                              <p class="text-muted font-16 m-b-0" style="color:blue">ລາຍໄດ້ປະຈຳເດືອນ</p>
                             </div>
                           </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                           <div class="list-inline text-center">
-                            <div class="list-inline-item p-r-30"><i data-feather="arrow-up-circle"
-                                class="col-green"></i>
+                            <div class="list-inline-item p-r-30">
+                            <i class="fas fa-signal" style="font-size:30px; color:green"></i>
                               <h5 class="mb-0 m-b-0">10,965,000 ກີບ</h5>
-                              <p class="text-muted font-18 m-b-0">ລາຍໄດ້ປະຈຳປີ</p>
+                              <p class="text-muted font-16 m-b-0" style="color:green">ລາຍໄດ້ປະຈຳປີ</p>
                             </div>
                           </div>
                         </div>
@@ -181,7 +181,7 @@ session_start();
                 </div>
                 <div class="card-body p-0">
                   <div class="table-responsive">
-                    <table  class="table table-striped table-hover" style="width:100%;">
+                    <table class="table table-striped table-hover" id="save-stage" style="width:100%;">
                     <thead>
                       <tr>
                         <th class="text-center">

@@ -2,7 +2,7 @@
 
 <?php
 
-include("config/connection.php");
+include_once 'config/connection.php';
 
 if (isset($_POST['save'])) {
     $username = $_POST['username'];

@@ -1,15 +1,5 @@
 <!-- Add New -->
 <?php 
-    include("config/connection.php");
-    $query ="SELECT * FROM `tb_ permissions`";
-
-    echo $query;
-        $result = $conn->query($query);
-        if($result->num_rows> 0){
-          $roles= mysqli_fetch_all($result, MYSQLI_ASSOC);
-        }
-?>
-<?php 
 include "include/header.php";
 include "include/topbar.php";
 include "include/sidebar.php";
