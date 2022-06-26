@@ -36,7 +36,7 @@ if (isset($_POST['save'])) {
                 <form method="POST" action="#" class="needs-validation" novalidate="">
                   <div class="form-group">
                     <label for="username" style="font-size:15px">ຊື່ຜູ້ໃຊ້</label>
-                    <input id="username" type="text" class="form-control" name="username" value="admin" placeholder="ຊື່ຜູ້ໃຊ້" tabindex="1" required autofocus>
+                    <input id="username" type="text" class="form-control" name="username" placeholder="ຊື່ຜູ້ໃຊ້" tabindex="1" required autofocus>
                     <div class="invalid-feedback" style="font-size:15px">
                       ກະລຸນາປ້ອນຊື່ຜູ້ໃຊ້ກ່ອນ
                     </div>
@@ -50,7 +50,7 @@ if (isset($_POST['save'])) {
                         </a> -->
                       </div>
                     </div>
-                    <input id="password" type="password" class="form-control" name="password" value="admin" placeholder="ລະຫັດຜ່ານ" tabindex="2" required>
+                    <input id="password" type="password" class="form-control" name="password" placeholder="ລະຫັດຜ່ານ" tabindex="2" required>
                     <div class="invalid-feedback" style="font-size:15px">
                     ກະລຸນາປ້ອນລະຫັດຜ່ານກ່ອນ
                     </div>

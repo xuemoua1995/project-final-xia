@@ -15,12 +15,11 @@ include_once("config/connection.php");
                 <h4>ລາຍງານຂໍ້ມູນລາຍຈ່າຍ</h4>
                 <div>
                 <form action="" methods="POST">
-                      <input type="date" id="from" name="from_date"/>
+                      <input type="date" name="from_date" value="<?php if(isset($_GET["from_date"])) echo $_GET["from_date"];?>"/>
                       <lable name="from">ຫາ</lable>
-                      <input type="date" id="to" name="to_date"/>
+                      <input type="date" name="to_date" value="<?php if(isset($_GET["to_date"])) echo $_GET["to_date"];?>"/>
                       <input type="submit" value="ຄົ້ນຫາ" class="btn btn-primary">
-                  </form>
-                  
+                </form>
                 </div>
               </div>
               <div class="card-body p-0">
@@ -34,9 +33,10 @@ include_once("config/connection.php");
                         <th>ລະຫັດສິນຄ້າ</th>
                         <th>ຊື່ສິນຄ້າ</th>
                         <th>ລະຫັດບາໂຄດ</th>
-                        <th>ລາຄາ</th>
+                        <th>ປະເພດສິນຄ້າ</th>
                         <th>ຈຳນວນ</th>
-                        <th>ວັນທີ່ຊື້</th>
+                        <th>ລາຄາ</th>
+                        <th>ວັນທີ່ເດືອນປິຊື້</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -71,10 +71,7 @@ include_once("config/connection.php");
                           <div><?php echo $row["qty"]; ?></div>
                           </td>
                           <td>
-                          <div><?php echo $row["buy_price"]; ?> ກີບ</div>
-                          </td>
-                          <td>
-                          <div><?php echo $row["sale_price"]; ?> ກີບ</div>
+                          <div><?php echo number_format($row["buy_price"]); ?> ກີບ</div>
                           </td>
                           <td>
                             <div class='badge badge-success'><?php echo $row["created_date"]; ?></div>
@@ -88,7 +85,13 @@ include_once("config/connection.php");
                     }
                     ?>
                     </tbody>
-                  </table>
+                    <?php
+                      $query = mysqli_query($conn, "SELECT SUM(buy_price) AS total FROM `tb_ProductItem`") or die(mysqli_error());
+
+                      $fetch = mysqli_fetch_array($query);
+                      ?>
+                    <h5 style="float:right;color:blue;">ລວມ: <?php echo number_format($fetch['total'])?> ກີບ</h5>
+                    </table>
                 </div>
               </div>
             </div>

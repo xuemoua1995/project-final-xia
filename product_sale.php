@@ -3,8 +3,7 @@ include "include/header.php";
 include "include/topbar.php";
 include "include/sidebar.php";
 include_once("config/connection.php");
-?>
-<?php
+
 $bc = $_GET['bc'];
 ?>
 <!-- Main Content -->
@@ -19,7 +18,7 @@ $bc = $_GET['bc'];
             </div>
             <div class="card-body">
               <div class="form-group">
-                <h6>ບາໂຄດ</h6>
+                <h6>ລະຫັດບາໂຄດ</h6>
                 <form id="form-bc">
                   <input type="text" name="bc" id="bc" style="border-style: 2px solid black;" class="form-control">
                   <input type="submit" style="display: none" value="save">
@@ -62,7 +61,7 @@ $bc = $_GET['bc'];
                         <div><?=$pro['name']?></div>
                       </td>
                       <td><?=$re['qty']?></td>
-                      <td><?=$re['price']?> ກີບ</td>
+                      <td><?=number_format($re['price'])?> ກີບ</td>
                       <td>
                         <div><?=$re['updated_date']?></div>
                       </td>
@@ -70,8 +69,6 @@ $bc = $_GET['bc'];
                         <a href='#' onclick="del('<?=$re['id']?>')" style='font-size:15px; color:red'><i class='far fa-trash-alt'></i> ລຶບ</a>
                       </td>
                     </tr>
-                   
-                   
                   <?php
                   }
                   ?>
@@ -79,7 +76,7 @@ $bc = $_GET['bc'];
               </table>
               <div>
               <?php
-                $query = mysqli_query($conn, "SELECT SUM(price) AS total FROM `tb_order`") or die(mysqli_error());
+                $query = mysqli_query($conn, "SELECT SUM(price) AS total FROM `tb_order` where tb_state='1'") or die(mysqli_error());
 
                 $fetch = mysqli_fetch_array($query);
                 ?>
@@ -88,7 +85,7 @@ $bc = $_GET['bc'];
             </div>
             
           </div>
-          <a href="invoice.php" onclick="del('<?=$re['id']?>')" class="btn btn-primary" style="font-size:15px"><i class="fas fa-edit"></i> ອອກໃບບິນ</a>
+          <a href="invoice.php" class="btn btn-primary" style="font-size:15px"><i class="fas fa-edit"></i> ອອກໃບບິນ</a>
         </div>
       </div>
     </div>

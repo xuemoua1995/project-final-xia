@@ -1,5 +1,6 @@
 <!-- Add New -->
 
+
 <?php
 
 include_once("config/connection.php");
@@ -13,37 +14,35 @@ if(isset($_POST['save'])){
     $sale_price = $_POST['sale_price'];
 
 
-    $sql = "INSERT INTO tb_ProductItem (name, barcode, typename, qty, buy_price, sale_price) VALUES ('$name', '$barcode', '$typename', '$qty','$buy_price','$sale_price')";
+    $sql = "INSERT INTO tb_ProductItem (name, barcode, typename, qty, buy_price, sale_price) VALUES ('$name', '$barcode', '$typename', '$qty', '$buy_price','$sale_price')";
 
     //use for MySQLi OOP
     if($conn->query($sql)){
         $_SESSION['success'] = 'Document added successfully';
-        header('location: product.php');
+        header('location: product_import.php');
     }
     
     else{
         $_SESSION['error'] = 'can not add Document';
-        header('location: product.php');
+        header('location: product_import.php');
     }
 }
 else{
     $_SESSION['error'] = 'Fill up add form Document';
-  
 }
 
 ?>
-
 <div class="modal fade" id="addnewproduct" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div style="text-align: center; padding-top:10px;">
 				<div>
-                <h3>ເພີ່ມຂໍ້ມູນສິນຄ້າ</h3>
+					<h3>ເພີ່ມຂໍ້ມູນສິນຄ້າ</h3>
 				</div>
 			</div>
 			<div class="modal-body">
 				<div class="container-fluid">
-                    <form method="POST" action="product-add.php" style="font-size: 15px;">
+                    <form method="POST" action="product-add-import.php" style="font-size: 15px;">
                         <div class="form-row">
                             <div class="col-12 mb-3">
                                 <p>ຊື່ສິນຄ້າ</p>
@@ -59,13 +58,16 @@ else{
                         <div class="form-row">
                             <div class="col-12 mb-3">
                                 <p>ຊື່ປະເພດສິນຄ້າ</p>
-                                <select name="typename" class="form-control" required>
+                                <select name="typename" id="" class="form-control" required>
                                    <option>ກະລຸນາເລືອກປະເພດສິນຄ້າກ່ອນ</option>
-                                   <?php 
-                                    $option = mysqli_query($conn, "SELECT * FROM tb_ProductType");
-                                   foreach($option as $key => $value){ ?>
-                                        <option value="<?=$value['typename'] ;?>"><?=$value['typename'] ;?></option>
-                                    <?php } ?>
+                                    <?php 
+                                    $types = mysqli_query($conn, "SELECT * FROM tb_ProductType");
+                                    foreach ($types as $type) {
+                                    ?>
+                                        <option><?php echo $type['typename']; ?> </option>
+                                        <?php 
+                                        }
+                                    ?>
                                    </select>
                             </div>
                         </div>
@@ -93,7 +95,6 @@ else{
                     <button type="submit" name="save" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> ບັນທຶກ</a>
                     </form>
 			    </div>
-			</div>
 			</div>
 		</div>
 	</div>

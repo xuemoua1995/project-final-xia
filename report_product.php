@@ -16,13 +16,12 @@ include_once("config/connection.php");
               <div class="card-header">
                 <h4>ລາຍງານຂໍ້ມູນສິນຄ້າ</h4>
                 <div>
-                  <form action="" methods="POST">
-                      <input type="date" id="from" name="from_date"/>
+                <form action="" methods="POST">
+                      <input type="date" name="from_date" value="<?php if(isset($_GET["from_date"])) echo $_GET["from_date"];?>"/>
                       <lable name="from">ຫາ</lable>
-                      <input type="date" id="to" name="to_date"/>
+                      <input type="date" name="to_date" value="<?php if(isset($_GET["to_date"])) echo $_GET["to_date"];?>"/>
                       <input type="submit" value="ຄົ້ນຫາ" class="btn btn-primary">
-                      <!-- <button class="btn btn-warning" type="submit">ປຣິນໃບລາຍງານ</button> -->
-                  </form>
+                </form>
                 </div>
               </div>
               <div class="card-body p-0">
@@ -76,10 +75,10 @@ include_once("config/connection.php");
                           <div><?php echo $row["qty"]; ?></div>
                           </td>
                           <td>
-                          <div><?php echo $row["buy_price"]; ?> ກີບ</div>
+                          <div><?php echo number_format($row["buy_price"]); ?> ກີບ</div>
                           </td>
                           <td>
-                          <div><?php echo $row["sale_price"]; ?> ກີບ</div>
+                          <div><?php echo number_format($row["sale_price"]); ?> ກີບ</div>
                           </td>
                           <td>
                             <div class='badge badge-success'><?php echo $row["created_date"]; ?></div>

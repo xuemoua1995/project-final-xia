@@ -26,6 +26,7 @@ function del($table,$where){
 	mysqli_query($conn,"SET NAMES utf8");
 	return mysqli_query($conn,"DELETE FROM $table  WHERE $where");
 }
+
 function qry($sql){
 	global $conn;
 	mysqli_query($conn,"SET NAMES utf8");
@@ -43,6 +44,12 @@ function insert($table,$field,$value){
 	return mysqli_query($conn,"INSERT INTO $table($field) VALUES($value)");
 }
 function update($table,$set,$where){
+	global $conn;
+	mysqli_query($conn,"SET NAMES utf8");
+	return mysqli_query($conn,"UPDATE $table SET $set WHERE $where");
+
+}
+function updatestatus($table,$set,$where){
 	global $conn;
 	mysqli_query($conn,"SET NAMES utf8");
 	return mysqli_query($conn,"UPDATE $table SET $set WHERE $where");

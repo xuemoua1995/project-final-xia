@@ -15,11 +15,11 @@ include_once("config/connection.php");
                 <h4>ລາຍງານຂໍ້ມູນລາຍຮັບ</h4>
                 <div>
                 <form action="" methods="POST">
-                      <input type="date" id="from" name="from_date"/>
+                      <input type="date" name="from_date" value="<?php if(isset($_GET["from_date"])) echo $_GET["from_date"];?>"/>
                       <lable name="from">ຫາ</lable>
-                      <input type="date" id="to" name="to_date"/>
+                      <input type="date" name="to_date" value="<?php if(isset($_GET["to_date"])) echo $_GET["to_date"];?>"/>
                       <input type="submit" value="ຄົ້ນຫາ" class="btn btn-primary">
-                  </form>
+                </form>
                 </div>
               </div>
               <div class="card-body p-0">
@@ -34,7 +34,7 @@ include_once("config/connection.php");
                         <th>ຊື່ສິນຄ້າ</th>
                         <th>ລາຄາ</th>
                         <th>ຈຳນວນ</th>
-                        <th>ວັນທີ່ຂາຍ</th>
+                        <th>ວັນທີ່ເດືອນປິຂາຍ</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -60,7 +60,7 @@ include_once("config/connection.php");
                           <div><?php echo $row["product_id"]; ?></div>
                           </td>
                           <td>
-                          <div><?php echo $row["price"]; ?></div>
+                          <div><?php echo number_format($row["price"]); ?></div>
                           </td>
                           <td>
                           <div><?php echo $row["qty"]; ?></div>
@@ -77,6 +77,12 @@ include_once("config/connection.php");
                     }
                     ?>
                     </tbody>
+                    <?php
+                      $query = mysqli_query($conn, "SELECT SUM(price) AS total FROM `tb_order`") or die(mysqli_error());
+
+                      $fetch = mysqli_fetch_array($query);
+                      ?>
+                    <h5 style="float:right;color:blue;">ລວມ: <?php echo number_format($fetch['total'])?> ກີບ</h5>
                   </table>
                 </div>
               </div>

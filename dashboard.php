@@ -161,7 +161,7 @@ session_start();
                           <div class="list-inline text-center">
                             <div class="list-inline-item p-r-30">
                             <i class="fas fa-signal" style="font-size:30px; color:green"></i>
-                              <h5 class="mb-0 m-b-0">10,965,000 ກີບ</h5>
+                              <h5 class="mb-0 m-b-0">4,965,000 ກີບ</h5>
                               <p class="text-muted font-16 m-b-0" style="color:green">ລາຍໄດ້ປະຈຳປີ</p>
                             </div>
                           </div>
@@ -224,10 +224,10 @@ session_start();
                               <div>". $row['typename'] . "</div>
                               </td>
                               <td>
-                              <div>". $row['buy_price'] . " ກີບ</div>
+                              <div>". number_format($row['buy_price']) . " ກີບ</div>
                               </td>
                               <td>
-                              <div>". $row['sale_price'] . " ກີບ</div>
+                              <div>". number_format($row['sale_price']) . " ກີບ</div>
                               </td>
                               <td>
                                 <div class='badge badge-success'>". $row['created_date'] . "</div>

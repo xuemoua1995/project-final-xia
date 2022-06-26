@@ -63,10 +63,10 @@ include_once("config/connection.php");
                           <div><?php echo $row["qty"]; ?></div>
                           </td>
                           <td>
-                          <div><?php echo $row["buy_price"]; ?> ກີບ</div>
+                          <div><?php echo number_format($row["buy_price"]); ?> ກີບ</div>
                           </td>
                           <td>
-                          <div><?php echo $row["sale_price"]; ?> ກີບ</div>
+                          <div><?php echo number_format($row["sale_price"]); ?> ກີບ</div>
                           </td>
                           <td>
                             <div class='badge badge-success'><?php echo $row["created_date"]; ?></div>

@@ -15,7 +15,7 @@ $pro = assoc("select * from tb_ProductItem where id = '$re[product_id]'");
     <div><?=$pro['name']?></div>
     </td>
     <td><?=$re['qty']?></td>
-    <td><?=$re['price']?> ກີບ</td>
+    <td><?=number_format($re['price'])?> ກີບ</td>
     <td>
     <div><?=$re['updated_date']?></div>
     </td>

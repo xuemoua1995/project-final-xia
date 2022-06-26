@@ -16,11 +16,11 @@ include_once("config/connection.php");
                 <h4>ລາຍງານຂໍ້ມູນພະນັກງານ</h4>
                 <div>
                 <form action="" methods="POST">
-                      <input type="date" id="from" name="from_date"/>
+                      <input type="date" name="from_date" value="<?php if(isset($_GET["from_date"])) echo $_GET["from_date"];?>"/>
                       <lable name="from">ຫາ</lable>
-                      <input type="date" id="to" name="to_date"/>
+                      <input type="date" name="to_date" value="<?php if(isset($_GET["to_date"])) echo $_GET["to_date"];?>"/>
                       <input type="submit" value="ຄົ້ນຫາ" class="btn btn-primary">
-                  </form>
+                </form>
                 </div>
               </div>
               <div class="card-body p-0">
@@ -37,7 +37,7 @@ include_once("config/connection.php");
                         <th>ວັນເດືອນປີເກີດ</th>
                         <th>ທີ່ຢູ່</th>
                         <th>ເບີໂທ</th>
-                        <th>ວັນທີ່ເພີ່ມ</th>
+                        <th>ວັນທີ່ເດືອນປິເພີ່ມ</th>
                       </tr>
                     </thead>
                     <tbody>

@@ -25,53 +25,48 @@ include_once("config/connection.php");
                          </div>
                          <div class="row mt-4">
                               <div class="col-md-12">
-                                   <div class="section-title">ສັງລວມການສັ່ງຊື້</div>
+                                   <div class="section-title">ສັງລວມການຂາຍສີນຄ້າ</div>
                                    <p class="section-lead">ລາຍການທັງໝົດຢູ່ທີ່ນີ້ບໍ່ສາມາດລຶບໄດ້.</p>
                                    <div class="table-responsive">
                                    <table class="table table-striped table-hover table-md">
                                         <tr>
-                                                       <th data-width="40">#</th>
-                                                       <th>ລາຍການ</th>
-                                                       <th class="text-center">ລາຄາ</th>
-                                                       <th class="text-center">ຈຳນວນ</th>
-                                                       <th class="text-right">ລວມທັງໝົດ</th>
-                                                  </tr>
-                                             <?php
-                                             $i=1;
-                                             $qry = qry("select * from tb_order where tb_state='1'");
-                                             while ($re = $qry->fetch_assoc()) {
-                                                  $pro = assoc("select * from tb_ProductItem where id = '$re[product_id]'");
-                                             ?>
-                                                  <tr>
-                                                       <th data-width="40"><?=$i?></th>
-                                                       <th><?=$pro['name']?></th>
-                                                       <th class="text-center"><?=$re['price']?> ກີບ</th>
-                                                       <th class="text-center"><?=$re['qty']?></th>
-                                                       <th class="text-right"><?=$re['price'] * $re['qty']?> ກີບ</th>
-                                                  </tr>
-                                             <?php
-                                             $i++;
-                                             }
-                                             ?>
-                                        </table>
+                                             <th data-width="40">#</th>
+                                             <th>ລາຍການ</th>
+                                             <th class="text-center">ລາຄາ</th>
+                                             <th class="text-center">ຈຳນວນ</th>
+                                             <th class="text-right">ລາຄາລວມ</th>
+                                        </tr>
+                                        <?php
+                                        $i=1;
+                                        $qry = qry("select * from tb_order where tb_state='1'");
+                                        while ($re = $qry->fetch_assoc()) {
+                                             $pro = assoc("select * from tb_ProductItem where id = '$re[product_id]'");
+                                        ?>
+                                        <tr>
+                                             <th data-width="40"><?=$i?></th>
+                                             <th><?=$pro['name']?></th>
+                                             <th class="text-center"><?=number_format($re['price'])?> ກີບ</th>
+                                             <th class="text-center"><?=number_format($re['qty'])?></th>
+                                             <th class="text-right"><?=number_format($re['price'] * $re['qty'])?> ກີບ</th>
+                                        </tr>
+                                        <?php
+                                        $i++;
+                                        }
+                                        ?>
+                                   </table>
                                    </div>
                                    <div class="row mt-4">
                                         <div class="col-lg-8">
                                         </div>
                                         <div class="col-lg-4 text-right">
                                              <div class="invoice-detail-item">
-                                                  <div class="invoice-detail-value">ລາຄາລວມ</div>
+                                                  <div class="invoice-detail-value">ລາຄາລວມທັງໝົດ</div>
                                                   <?php
-                                                  $query = mysqli_query($conn, "SELECT SUM(price) AS total FROM `tb_order`") or die(mysqli_error());
+                                                  $query = mysqli_query($conn, "SELECT SUM(price) AS total FROM `tb_order` where tb_state='1'") or die(mysqli_error());
 
                                                   $fetch = mysqli_fetch_array($query);
                                                   ?>
-                                                  <div class="invoice-detail-value" style="color:blue"><?php echo number_format($fetch['total'])?> ກີບ</div>
-                                             </div>
-                                             <hr class="mt-2 mb-2">
-                                             <div class="invoice-detail-item">
-                                                  <div class="invoice-detail-value">ລາຄາລວມທັງໝົດ</div>
-                                                  <div class="invoice-detail-value invoice-detail-value-lg" style="color:blue"><?php echo number_format($fetch['total'])?> ກີບ</div>
+                                                   <div class="invoice-detail-value invoice-detail-value-lg" style="color:blue"><?php echo number_format($fetch['total'])?> ກີບ</div>
                                              </div>
                                         </div>
                                    </div>
@@ -81,10 +76,10 @@ include_once("config/connection.php");
                     <hr>
                     <div>
                     <div class="text-md-left">
-                         <a href="product_sale.php" class="btn btn-primary btn-icon icon-left"><i class="fas fa-backward"></i> ກັບຄືນໜ້າສະແກນຂາຍສີນຄ້າ</a>
+                         <a href="product_sale.php" onclick="updatestatus()" class="btn btn-primary btn-icon icon-left" style="font-size:18px"><i class="fas fa-arrow-alt-circle-up"></i> ປິດໃບບິນ</a>
                     </div>
                     <div class="text-md-right">
-                         <button type="submit" class="btn btn-warning btn-icon icon-left"><i class="fas fa-print"></i> ປຣິນໃບບິນ</button>
+                         <button type="submit" class="btn btn-warning btn-icon icon-left" style="font-size:18px"><i class="fas fa-print"></i> ປຣິນໃບບິນ</button>
                     </div>
                     </div>
                </div>
@@ -107,6 +102,19 @@ include_once("config/connection.php");
     });
   });
   </script>
-     <?php 
-     include "include/footer.php";
-     ?>
+  <script>
+  var updatestatus = id=>{
+    let data_s = "id=" + id;
+    $.post("save-cart/updatestatus.php",data_s,function(res){
+      if (res.state == 1) {
+        $("#tb-showCart").load("save-cart/load-cart.php");
+        $("#form-bc #bc").val('');
+      } else {
+        alert('ບໍ່ສາມາດດຳເນີນການໄດ້')
+      }
+    },'JSON')
+  }
+</script>
+<?php 
+include "include/footer.php";
+?>
