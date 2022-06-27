@@ -66,7 +66,7 @@ include_once("config/connection.php");
 
                                                   $fetch = mysqli_fetch_array($query);
                                                   ?>
-                                                   <div class="invoice-detail-value invoice-detail-value-lg" style="color:blue"><?php echo number_format($fetch['total'])?> ກີບ</div>
+                                                   <div class="invoice-detail-value invoice-detail-value-lg" style="color:black"><?php echo number_format($fetch['total'])?> ກີບ</div>
                                              </div>
                                         </div>
                                    </div>
@@ -86,7 +86,7 @@ include_once("config/connection.php");
           </div>
      </section>
 </div>
-     <script>
+<script>
     $(function () {
     $('button[type="submit"]').click(function () {
         var pageTitle = 'ຮ້ານ ສຸນິດຕາ',
@@ -101,8 +101,9 @@ include_once("config/connection.php");
         return false;
     });
   });
-  </script>
-  <script>
+</script>
+
+<script>
   var updatestatus = id=>{
     let data_s = "id=" + id;
     $.post("save-cart/updatestatus.php",data_s,function(res){

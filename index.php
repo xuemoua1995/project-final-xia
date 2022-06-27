@@ -33,7 +33,7 @@ if (isset($_POST['save'])) {
                 <h1 style="text-align: center">ໜ້າຟອມເຂົ້າສູ່ລະບົບ</h1>
               </div>
               <div class="card-body">
-                <form method="POST" action="#" class="needs-validation" novalidate="">
+                <form method="POST" action="index.php" class="needs-validation" novalidate="">
                   <div class="form-group">
                     <label for="username" style="font-size:15px">ຊື່ຜູ້ໃຊ້</label>
                     <input id="username" type="text" class="form-control" name="username" placeholder="ຊື່ຜູ້ໃຊ້" tabindex="1" required autofocus>

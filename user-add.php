@@ -8,8 +8,8 @@ if (isset($_POST['save'])) {
     $username = $_POST['username'];
     $fullname = $_POST['fullname'];
     $perm_mod = $_POST['perm_mod'];
-    $password = md5($_POST['password']);
-    $cpassword = md5($_POST['cpassword']);
+    $password = $_POST['password'];
+    $cpassword = $_POST['cpassword'];
 
     if ($password == $cpassword) {
         $sql = "SELECT * FROM tb_user WHERE username='$username'";

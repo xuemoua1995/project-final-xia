@@ -34,15 +34,13 @@ $row = mysqli_fetch_assoc($result);
                $fullname =$_REQUEST['fullname'];
                $perm_mod =$_REQUEST['perm_mod'];
                $password =$_REQUEST['password'];
-               $passwordEncrypted = sha1($password);
                $confpassword = $_POST['cpassword'];
-               $confPasswordEncrypted = sha1($confirmPass);  
                
                if($password !== $confpassword){
                 echo "<script>alert('Passwords are not match')</script>";
                }else{
                 $update="UPDATE tb_user set username='".$username."',fullname='".$fullname."',
-                perm_mod='".$perm_mod."', password='".$confPasswordEncrypted."' where id='".$id."'";
+                perm_mod='".$perm_mod."', password='".$confpassword."' where id='".$id."'";
               
                 mysqli_query($conn, $update) or die(mysqli_error());
                 $status = "ແກ້ໄຂຂໍ້ມູນສຳເລັດແລ້ວ. </br></br>
@@ -94,7 +92,7 @@ $row = mysqli_fetch_assoc($result);
                                    </div>
                             <div class="col-12 mb-3">
                                   <p style="font-size:15px">ຢືນຢັນລະຫັດຜ່ານ</p>
-                                  <input type="password" name="cpassword" value="<?php echo $row['cpassword'];?>" class="form-control" required />
+                                  <input type="password" name="cpassword" value="<?php echo $row['password'];?>" class="form-control" required />
                               
                               </div>
                          </div>

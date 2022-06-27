@@ -80,7 +80,7 @@ $bc = $_GET['bc'];
 
                 $fetch = mysqli_fetch_array($query);
                 ?>
-              <h5 style="float:right;color:blue;">ລວມ: <?php echo number_format($fetch['total'])?> ກີບ</h5>
+              <h5 style="float:right;color:black;">ລວມ: <?php echo number_format($fetch['total'])?> ກີບ</h5>
             </div>
             </div>
             
