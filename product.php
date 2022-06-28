@@ -69,7 +69,7 @@ include_once("config/connection.php");
                           <div><?php echo number_format($row["sale_price"]); ?> ກີບ</div>
                           </td>
                           <td>
-                            <div class='badge badge-success'><?php echo $row["created_date"]; ?></div>
+                            <div class='badge badge-success'><?php echo date_format($row["created_date"]); ?></div>
                           </td>
                           <td>
                             <a href="product-edit.php?id=<?php echo $row["id"]; ?>" class='btn btn-primary' style='font-size:15px'><i class='fas fa-edit'></i></a> 

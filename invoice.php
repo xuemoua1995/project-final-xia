@@ -18,7 +18,7 @@ include_once("config/connection.php");
                                         <br>
                                         <?php
                                              $dt = new DateTime();
-                                              echo $dt->format('ວັນທີ່ສັ່ງຊື້: Y-m-d H:i:s');
+                                              echo $dt->format('ວັນທີ່ສັ່ງຊື້: d-m-y H:i');
                                              ?>
                                    </div>
                               </div>

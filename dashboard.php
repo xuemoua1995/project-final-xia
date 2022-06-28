@@ -6,7 +6,6 @@ session_start();
  include('include/sidebar.php'); 
  include_once('config/connection.php');
    
-
  ?>
 
  <!-- Main Content -->
@@ -113,11 +112,11 @@ session_start();
                           <h5 class="font-18">ຈຳນວນລາຍໄດ້</h5>
                           <br>
                           <?php
-                          $query = mysqli_query($conn, "SELECT SUM(sale_price) AS total FROM `tb_ProductItem`") or die(mysqli_error());
+                          $query = mysqli_query($conn, "SELECT SUM(price) AS total FROM `tb_order` WHERE tb_state='0'") or die(mysqli_error());
 
                           $fetch = mysqli_fetch_array($query);
                           ?>
-                          <h2 class="mb-3 font-18" style="color:blue"><?php echo number_format($fetch['total'])?> ກີບ</h2>
+                          <h2 class="mb-3 font-16" style="color:blue"><?php echo number_format($fetch['total'])?> ກີບ</h2>
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
@@ -142,17 +141,25 @@ session_start();
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                           <div class="list-inline text-center">
                             <div class="list-inline-item p-r-30">
+                              <?php 
+                               $query = mysqli_query($conn,"SELECT DATE(created_date), sum(price) as total FROM tb_order ORDER BY DATE(created_date)");
+                               $fetchDaily = mysqli_fetch_array($query);
+                              ?>
                             <i class="fas fa-signal" style="font-size:30px; color:red"></i>
-                              <h5 class="m-b-0">675,000 ກີບ</h5>
-                              <p class="text-muted font-16 m-b-0" style="color:red">ລາຍໄດ້ປະຈຳອາທິດ</p>
+                              <h5 class="m-b-0"><?php echo number_format($fetchDaily['total'])?> ກີບ</h5>
+                              <p class="text-muted font-16 m-b-0" style="color:red">ລາຍໄດ້ປະຈຳວັນ</p>
                             </div>
                           </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                           <div class="list-inline text-center">
                             <div class="list-inline-item p-r-30">
+                            <?php 
+                               $query = mysqli_query($conn,"SELECT MONTHNAME(created_date) as mname, sum(price) as total FROM tb_order GROUP BY MONTH(created_date)");
+                               $fetchMonth = mysqli_fetch_array($query);
+                              ?>
                             <i class="fas fa-signal" style="font-size:30px; color:blue"></i>
-                              <h5 class="m-b-0">1,587,000 ກີບ</h5>
+                              <h5 class="m-b-0"><?php echo number_format($fetchMonth['total'])?> ກີບ</h5>
                               <p class="text-muted font-16 m-b-0" style="color:blue">ລາຍໄດ້ປະຈຳເດືອນ</p>
                             </div>
                           </div>
@@ -160,8 +167,12 @@ session_start();
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                           <div class="list-inline text-center">
                             <div class="list-inline-item p-r-30">
+                            <?php 
+                               $query = mysqli_query($conn,"SELECT MONTHNAME(created_date) as mname, sum(price) as total FROM tb_order GROUP BY MONTH(created_date)");
+                               $fetchYear = mysqli_fetch_array($query);
+                              ?>
                             <i class="fas fa-signal" style="font-size:30px; color:green"></i>
-                              <h5 class="mb-0 m-b-0">4,965,000 ກີບ</h5>
+                              <h5 class="mb-0 m-b-0"><?php echo number_format($fetchYear['total'])?> ກີບ</h5>
                               <p class="text-muted font-16 m-b-0" style="color:green">ລາຍໄດ້ປະຈຳປີ</p>
                             </div>
                           </div>
