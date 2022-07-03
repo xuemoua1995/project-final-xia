@@ -49,9 +49,3 @@ function update($table,$set,$where){
 	return mysqli_query($conn,"UPDATE $table SET $set WHERE $where");
 
 }
-function updatestatus($table,$set,$where){
-	global $conn;
-	mysqli_query($conn,"SET NAMES utf8");
-	return mysqli_query($conn,"UPDATE $table SET $set WHERE $where");
-
-}

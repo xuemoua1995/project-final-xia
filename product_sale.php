@@ -36,7 +36,7 @@ $bc = $_GET['bc'];
                     <th class="text-center">
                       <i class="fas fa-th"></i>
                     </th>
-                    <th>ລະຫັດບາໂຄດ</th>
+                    <th>ບາໂຄດ</th>
                     <th>ຊື່ສິນຄ້າ</th>
                     <th>ຈຳນວນ</th>
                     <th>ລາຄາ</th>
@@ -48,6 +48,7 @@ $bc = $_GET['bc'];
                   <?php
                   $qry = qry("select * from tb_order where tb_state='1'");
                   while ($re = $qry->fetch_assoc()) {
+                    $new_date = date("d/m/Y H:i:s", strtotime($re["updated_date"]));
                     $pro = assoc("select * from tb_ProductItem where id = '$re[product_id]'");
                   ?>
                     <tr>
@@ -63,7 +64,7 @@ $bc = $_GET['bc'];
                       <td><?=$re['qty']?></td>
                       <td><?=number_format($re['price'])?> ກີບ</td>
                       <td>
-                        <div><?=$re['updated_date']?></div>
+                        <div><?=$new_date?></div>
                       </td>
                       <td>
                         <a href='#' onclick="del('<?=$re['id']?>')" style='font-size:15px; color:red'><i class='far fa-trash-alt'></i> ລຶບ</a>

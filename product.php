@@ -42,7 +42,9 @@ include_once("config/connection.php");
                       $sql = "SELECT * FROM tb_ProductItem";
                       $query = $conn->query($sql);
                     
-                        while($row =  $query->fetch_assoc()) {?>
+                        while($row =  $query->fetch_assoc()) {
+                          $new_date = date("d/m/Y H:i:s", strtotime($row["created_date"]));
+                          ?>
                           <tr>
                           <td>
                             <div class='sort-handler'>
@@ -69,7 +71,7 @@ include_once("config/connection.php");
                           <div><?php echo number_format($row["sale_price"]); ?> ກີບ</div>
                           </td>
                           <td>
-                            <div class='badge badge-success'><?php echo date_format($row["created_date"]); ?></div>
+                            <div class='badge badge-success'><?php echo $new_date; ?></div>
                           </td>
                           <td>
                             <a href="product-edit.php?id=<?php echo $row["id"]; ?>" class='btn btn-primary' style='font-size:15px'><i class='fas fa-edit'></i></a> 

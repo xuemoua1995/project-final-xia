@@ -17,9 +17,9 @@ include_once("config/connection.php");
                 <h4>ລາຍງານຂໍ້ມູນສິນຄ້າ</h4>
                 <div>
                 <form action="" methods="POST">
-                      <input type="date" name="from_date" value="<?php if(isset($_GET["from_date"])) echo $_GET["from_date"];?>"/>
+                      <input type="date" name="from_date" id="date-picker" value="<?php if(isset($_GET["from_date"])) echo $_GET["from_date"];?>"/>
                       <lable name="from">ຫາ</lable>
-                      <input type="date" name="to_date" value="<?php if(isset($_GET["to_date"])) echo $_GET["to_date"];?>"/>
+                      <input type="date" name="to_date" id="date-picker" value="<?php if(isset($_GET["to_date"])) echo $_GET["to_date"];?>"/>
                       <input type="submit" value="ຄົ້ນຫາ" class="btn btn-primary">
                 </form>
                 </div>
@@ -46,6 +46,9 @@ include_once("config/connection.php");
                     <tbody>
                     <?php
                     if(isset($_GET["from_date"]) && isset($_GET["to_date"])){
+                      // $from = date("d-m-Y", strtotime($_GET["from_date"]));
+                      // $to = date("d-m-Y", strtotime($_GET["to_date"]));
+
                       $from_date = $_GET["from_date"];
                       $to_date = $_GET["to_date"];
 
@@ -54,6 +57,7 @@ include_once("config/connection.php");
 
                       if(mysqli_num_rows($query_num) > 0){
                         foreach($query_num as $row){
+                          $new_date = date("d/m/Y H:i:s", strtotime($row["created_date"]));
                           ?>
                           <tr>
                           <td>
@@ -81,7 +85,7 @@ include_once("config/connection.php");
                           <div><?php echo number_format($row["sale_price"]); ?> ກີບ</div>
                           </td>
                           <td>
-                            <div class='badge badge-success'><?php echo $row["created_date"]; ?></div>
+                            <div class='badge badge-success'><?php echo $new_date;  ?></div>
                           </td>
                         </tr>
                         <?php
@@ -101,42 +105,15 @@ include_once("config/connection.php");
       </div>
     </section>
   </div>
-  <script>
-  $( function() {
-    var dateFormat = "dd/mm/yy",
-      from = $( "#from" )
-        .datepicker({
-          defaultDate: "+1w",
-          changeMonth: true,
-          numberOfMonths: 1,
-		  dateFormat:"dd/mm/yy",
-        })
-        .on( "change", function() {
-          to.datepicker( "option", "minDate", getDate( this ) );
-        }),
-      to = $( "#to" ).datepicker({
-        defaultDate: "+1w",
-        changeMonth: true,
-        numberOfMonths: 1,
-		dateFormat:"dd/mm/yy",
-      })
-      .on( "change", function() {
-        from.datepicker( "option", "maxDate", getDate( this ) );
-      });
- 
-    function getDate( element ) {
-      var date;
-      try {
-        date = $.datepicker.parseDate( dateFormat, element.value );
-      } catch( error ) {
-        date = null;
-      }
- 
-      return date;
-    }
-  } );
-  </script>
-<?php include('product-add.php') ?>
+  <!-- <script>
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var todayDate = String(date.getDate()).padStart(2,'0');
+    var getPatern = year + '-' + month + '-' + todayDate;
+
+    document.getElementById('date-picker').value = getPatern;
+  </script> -->
 <?php 
 include "include/footer.php";
 ?>

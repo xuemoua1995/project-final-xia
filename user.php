@@ -55,7 +55,9 @@ else{
                       $sql = "SELECT * FROM tb_user";
                       $query = $conn->query($sql);
                     
-                        while($row =  $query->fetch_assoc()) {?>
+                        while($row =  $query->fetch_assoc()) {
+                          $new_date = date("d/m/Y H:i:s", strtotime($row["created_date"]));
+                          ?>
                           <tr>
                           <td>
                             <div class='sort-handler'>
@@ -74,7 +76,7 @@ else{
                           <div><?php echo $row["perm_mod"]; ?></div>
                           </td>
                           <td>
-                            <div class='badge badge-success'><?php echo $row["created_date"]; ?></div>
+                            <div class='badge badge-success'><?php echo $new_date; ?></div>
                           </td>
                           <td>
                             <a href="user-edit.php?id=<?php echo $row["id"]; ?>" class='btn btn-primary' style='font-size:15px'><i class='fas fa-edit'></i> ແກ້ໄຂ</a> 

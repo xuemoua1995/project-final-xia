@@ -14,7 +14,7 @@ if(isset($_POST['save'])){
     $sale_price = $_POST['sale_price'];
 
 
-    $sql = "INSERT INTO tb_ProductItem (name, barcode, typename, qty, buy_price, sale_price) VALUES ('$name', '$barcode', '$typename', '$qty', '$buy_price','$sale_price')";
+    $sql = "INSERT INTO tb_import (name, barcode, typename, qty, buy_price, sale_price) VALUES ('$name', '$barcode', '$typename', '$qty', '$buy_price','$sale_price')";
 
     //use for MySQLi OOP
     if($conn->query($sql)){

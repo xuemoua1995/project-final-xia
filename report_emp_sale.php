@@ -51,6 +51,7 @@ include_once("config/connection.php");
 
                       if(mysqli_num_rows($query_num) > 0){
                         foreach($query_num as $row){
+                          $new_date = date("d/m/Y H:i:s", strtotime($row["created_date"]));
                           ?>
                           <tr>
                           <td>
@@ -75,7 +76,7 @@ include_once("config/connection.php");
                           <div><?php echo $row["phone"]; ?></div>
                           </td>
                           <td>
-                            <div class='badge badge-success'><?php echo $row["created_date"]; ?></div>
+                            <div class='badge badge-success'><?php echo $new_date; ?></div>
                           </td>
                         </tr>
                         <?php

@@ -206,7 +206,7 @@ session_start();
                         <th>ປະເພດສິນຄ້າ</th>
                         <th>ລາຄາຊື້</th>
                         <th>ລາຄາຂາຍ</th>
-                        <th>ເພີ່ມວັນທີ່</th>
+                        <th>ເພີ່ມວັນທີ່ເດຶອນປີ</th>
                       </tr>
                       </thead>
                       <tbody>
@@ -216,7 +216,7 @@ session_start();
                           $query = $conn->query($sql);
                         
                             while($row =  $query->fetch_assoc()) {
-
+                              $new_date = date("d/m/Y H:i:s", strtotime($row["created_date"]));
                               echo "
                               <tr>
                               <td>
@@ -241,7 +241,7 @@ session_start();
                               <div>". number_format($row['sale_price']) . " ກີບ</div>
                               </td>
                               <td>
-                                <div class='badge badge-success'>". $row['created_date'] . "</div>
+                                <div class='badge badge-success'>". $new_date . "</div>
                               </td>
                             </tr>";
                             }

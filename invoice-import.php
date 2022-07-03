@@ -14,7 +14,7 @@ include_once("config/connection.php");
                          <div class="row">
                               <div class="col-lg-12">
                                    <div class="invoice-title">
-                                        <h2>ໃບບິນການຂາຍສິນຄ້າ</h2>
+                                        <h2>ໃບບິນການາສັ່ງຊື້ສິນຄ້າ</h2>
                                         <br>
                                         <?php
                                              $dt = new DateTime();
@@ -25,7 +25,7 @@ include_once("config/connection.php");
                          </div>
                          <div class="row mt-4">
                               <div class="col-md-12">
-                                   <div class="section-title">ສັງລວມການຂາຍສີນຄ້າ</div>
+                                   <div class="section-title">ສັງລວມການາສັ່ງຊື້ສິນຄ້າ</div>
                                    <p class="section-lead">ລາຍການທັງໝົດຢູ່ທີ່ນີ້ບໍ່ສາມາດລຶບໄດ້.</p>
                                    <div class="table-responsive">
                                    <table class="table table-striped table-hover table-md">
@@ -38,16 +38,16 @@ include_once("config/connection.php");
                                         </tr>
                                         <?php
                                         $i=1;
-                                        $qry = qry("select * from tb_order where tb_state='1'");
+                                        $qry = qry("select * from tb_import where tb_state='1'");
                                         while ($re = $qry->fetch_assoc()) {
-                                             $pro = assoc("select * from tb_ProductItem where id = '$re[product_id]'");
+                                             // $pro = assoc("select * from tb_ProductItem where id = '$re[product_id]'");
                                         ?>
                                         <tr>
                                              <th data-width="40"><?=$i?></th>
-                                             <th><?=$pro['name']?></th>
-                                             <th class="text-center"><?=number_format($re['price'])?> ກີບ</th>
+                                             <th><?=$re['name']?></th>
+                                             <th class="text-center"><?=number_format($re['buy_price'])?> ກີບ</th>
                                              <th class="text-center"><?=number_format($re['qty'])?></th>
-                                             <th class="text-right"><?=number_format($re['price'] * $re['qty'])?> ກີບ</th>
+                                             <th class="text-right"><?=number_format($re['buy_price'] * $re['qty'])?> ກີບ</th>
                                         </tr>
                                         <?php
                                         $i++;
@@ -62,7 +62,7 @@ include_once("config/connection.php");
                                              <div class="invoice-detail-item">
                                                   <div class="invoice-detail-value">ລາຄາລວມທັງໝົດ</div>
                                                   <?php
-                                                  $query = mysqli_query($conn, "SELECT SUM(price) AS total FROM `tb_order` where tb_state='1'") or die(mysqli_error());
+                                                  $query = mysqli_query($conn, "SELECT SUM(buy_price) AS total FROM `tb_import` where tb_state='1'") or die(mysqli_error());
 
                                                   $fetch = mysqli_fetch_array($query);
                                                   ?>
@@ -76,7 +76,7 @@ include_once("config/connection.php");
                     <hr>
                     <div>
                     <div class="text-md-left">
-                         <a href="product_sale.php" onclick="updatestatus()" class="btn btn-primary btn-icon icon-left" style="font-size:18px"><i class="fas fa-arrow-alt-circle-up"></i> ປິດໃບບິນ</a>
+                         <a href="product_import.php" onclick="updateimport()" class="btn btn-primary btn-icon icon-left" style="font-size:18px"><i class="fas fa-arrow-alt-circle-up"></i> ປິດໃບບິນ</a>
                     </div>
                     <div class="text-md-right">
                          <button type="submit" class="btn btn-warning btn-icon icon-left" style="font-size:18px"><i class="fas fa-print"></i> ປຣິນໃບບິນ</button>
@@ -104,9 +104,9 @@ include_once("config/connection.php");
 </script>
 
 <script>
-  var updatestatus = id=>{
+  var updateimport = id=>{
     let data_s = "id=" + id;
-    $.post("save-cart/updatestatus.php",data_s,function(res){
+    $.post("save-cart/update-import.php",data_s,function(res){
       if (res.state == 1) {
         $("#tb-showCart").load("save-cart/load-cart.php");
         $("#form-bc #bc").val('');

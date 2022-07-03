@@ -38,6 +38,7 @@ $result = mysqli_query($conn, $query);
                       if (mysqli_num_rows($result) > 0) {
                         $sn=1;
                         while($row = mysqli_fetch_assoc($result)) {
+                        $new_date = date("d/m/Y H:i:s", strtotime($row["created_date"]));
                       ?>
                       <tr>
                         <td>
@@ -51,7 +52,7 @@ $result = mysqli_query($conn, $query);
                         <div><?php echo $row['typename']; ?></div>
                         </td>
                         <td>
-                          <div class="badge badge-success"><?php echo $row['created_date']; ?></div>
+                          <div class="badge badge-success"><?php echo $new_date; ?></div>
                         </td>
                         <td><a href="category-edit.php?id=<?php echo $row["id"]; ?>" class="btn btn-primary" style="font-size:15px"><i class="fas fa-edit"></i> ແກ້ໄຂ</a> <a href="category-delete.php?id=<?php echo $row["id"]; ?>" class="btn btn-danger" style="font-size:15px"><i class="far fa-trash-alt"></i> ລຶບ</a></td>
                       </tr>

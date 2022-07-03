@@ -37,7 +37,7 @@ $row = mysqli_fetch_assoc($result);
                $buy_price =$_REQUEST['buy_price'];
                $sale_price =$_REQUEST['sale_price'];
                
-               $update="UPDATE tb_ProductItem set name='".$name."',
+               $update="UPDATE tb_import set name='".$name."',
                barcode='".$barcode."', typename='".$typename."', qty='".$qty."',
                buy_price='".$buy_price."', sale_price='".$sale_price."' where id='".$id."'";
              
