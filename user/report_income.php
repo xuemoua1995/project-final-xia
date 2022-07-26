@@ -30,7 +30,7 @@ include_once("config/connection.php");
                         <th class="text-center">
                           <i class="fas fa-th"></i>
                         </th>
-                        <th>ລະຫັດສິນຄ້າ</th>
+                        <th>ລຳດັບ</th>
                         <th>ຊື່ສິນຄ້າ</th>
                         <th>ລາຄາ</th>
                         <th>ຈຳນວນ</th>
@@ -39,6 +39,7 @@ include_once("config/connection.php");
                     </thead>
                     <tbody>
                     <?php
+                    $i=1;
                     if(isset($_GET["from_date"]) && isset($_GET["to_date"])){
                       $from_date = $_GET["from_date"];
                       $to_date = $_GET["to_date"];
@@ -56,7 +57,7 @@ include_once("config/connection.php");
                               <i class='fas fa-th'></i>
                             </div>
                           </td>
-                          <td><?php echo $row["id"]; ?></td>
+                          <td><?php echo $i ?></td>
                           <td>
                           <div><?php echo $row["product_id"]; ?></div>
                           </td>
@@ -71,6 +72,7 @@ include_once("config/connection.php");
                           </td>
                         </tr>
                         <?php
+                        $i++;
                         }
                       }else{
                         echo "<span class='badge badge-danger'>ບໍມີຂໍ້ມູນ</span>";

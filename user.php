@@ -41,7 +41,7 @@ else{
                         <th class="text-center">
                           <i class="fas fa-th"></i>
                         </th>
-                        <th>ລະຫັດ</th>
+                        <th>ລຳດັບ</th>
                         <th>ຊື່ພະນັກງານ</th>
                         <th>ຊື່ຜູ້ໃຊ້</th>
                         <th>ສິດທິ</th>
@@ -65,7 +65,7 @@ else{
                               <i class='fas fa-th'></i>
                             </div>
                           </td>
-                          <td><?php echo $row["id"]; ?></td>
+                          <td><?php echo $count ?></td>
                           
                           <td>
                           <div><?php echo $row["fullname"]; ?></div>

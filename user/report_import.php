@@ -33,7 +33,7 @@ include_once("config/connection.php");
                         <th class="text-center">
                           <i class="fas fa-th"></i>
                         </th>
-                        <th>ລະຫັດ</th>
+                        <th>ລຳດັບ</th>
                         <th>ຊື່ສິນຄ້າ</th>
                         <th>ບາໂຄດ</th>
                         <th>ປະເພດສິນຄ້າ</th>

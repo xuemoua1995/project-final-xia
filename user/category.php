@@ -27,7 +27,7 @@ $result = mysqli_query($conn, $query);
                         <th class="text-center">
                           <i class="fas fa-th"></i>
                         </th>
-                        <th>ລະຫັດປະເພດສິນຄ້າ</th>
+                        <th>ລຳດັບ</th>
                         <th>ຊື່ປະເພດສິນຄ້າ</th>
                         <th>ເພີ່ມວັນທີ່ເດຶອນປີ</th>
                         <th>Action</th>
@@ -46,7 +46,7 @@ $result = mysqli_query($conn, $query);
                             <i class="fas fa-th"></i>
                           </div>
                         </td>
-                        <td><?php echo $row['id']; ?></td>
+                        <td><?php echo $sn ?></td>
                         
                         <td>
                         <div><?php echo $row['typename']; ?></div>

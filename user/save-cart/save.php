@@ -5,7 +5,6 @@
 $bc = $_POST['bc'];
 $info = assoc("select * from tb_ProductItem where barcode = '$bc'");
 $pro_id = $info['id'];
-
 $qty = 1;
 $price = $info['sale_price'];
 

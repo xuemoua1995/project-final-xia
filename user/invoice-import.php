@@ -11,17 +11,27 @@ include_once("config/connection.php");
           <div class="section-body">
                <div class="invoice">
                     <div class="invoice-print">
+                    <div style="margin:auto; width:600px">
+                         <p style="text-align: center">ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ <br>
+                         ສັນຕິພາບ ເອກະລາດ ປະຊາທິປະໄຕ ເອກະພາບ ວັດທະນາຖາວອນ
+                         </p>
+                         </div>
                          <div class="row">
-                              <div class="col-lg-12">
+                         <div class="col-lg-12">
                                    <div class="invoice-title">
-                                        <h2>ໃບບິນການສັ່ງຊື້ສິນຄ້າ</h2>
+                                        <h2 style="text-align: center">ໃບບິນການສັ່ງຊື້ສິນຄ້າ</h2>
                                    </div>
                               </div>
                          </div>
                          <div class="row mt-4">
                               <div class="col-md-12">
-                                   <div class="section-title">ສັງລວມການສັ່ງຊື້ສິນຄ້າ</div>
-                                   <p class="section-lead">ລາຍການທັງໝົດຢູ່ທີ່ນີ້ບໍ່ສາມາດລຶບໄດ້.</p>
+                              <p class="section-lead">ເລກທີ່: ....................................... <br>
+                                   ວັນທີ່: ....................................... <br>
+                                   ອັດເອກະສານ ແລະ ເຄື່ອງໃຊ້ຫ້ອງການ <br>
+                                        ບ້ານ ພັນຫຼວງ ນະຄອນຫຼວງພະບາງ ແຂວງ ຫຼວງພະບາງ (ຕໍ່ໜ້າ ມປ ພັນຫຼວງ)
+                                   <br>
+                                   ໂທ: 020 2930 0013, 020 2930 0014, 030 481 9980
+                                   </p>
                                    <div class="table-responsive">
                                    <table class="table table-striped table-hover table-md">
                                         <tr>

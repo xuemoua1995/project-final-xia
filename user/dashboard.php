@@ -116,7 +116,7 @@ session_start();
                           <h5 class="font-18">ຈຳນວນລາຍໄດ້</h5>
                           <br>
                           <?php
-                          $query = mysqli_query($conn, "SELECT SUM(price) AS total FROM `tb_order` WHERE tb_state='0'") or die(mysqli_error());
+                          $query = mysqli_query($conn, "SELECT SUM(price) AS total FROM `tb_order` WHERE tb_state!='1'") or die(mysqli_error());
 
                           $fetch = mysqli_fetch_array($query);
                           ?>
@@ -146,12 +146,12 @@ session_start();
                           <div class="list-inline text-center">
                             <div class="list-inline-item p-r-30">
                               <?php 
-                               $query = mysqli_query($conn,"SELECT DATE(created_date), sum(price) as total FROM tb_order ORDER BY DATE(created_date)");
+                               $query = mysqli_query($conn,"SELECT DATE(created_date), sum(price) as total FROM tb_order WHERE DATE(created_date) = DATE(NOW()) ORDER BY `id` DESC");
                                $fetchDaily = mysqli_fetch_array($query);
                               ?>
                             <i class="fas fa-signal" style="font-size:30px; color:red"></i>
                               <h5 class="m-b-0"><?php echo number_format($fetchDaily['total'])?> ກີບ</h5>
-                              <p class="text-muted font-16 m-b-0" style="color:red">ລາຍໄດ້ປະຈຳວັນ</p>
+                              <p class=" font-16 m-b-0" style="color:red">ລາຍໄດ້ປະຈຳວັນ</p>
                             </div>
                           </div>
                         </div>
@@ -164,7 +164,7 @@ session_start();
                               ?>
                             <i class="fas fa-signal" style="font-size:30px; color:blue"></i>
                               <h5 class="m-b-0"><?php echo number_format($fetchMonth['total'])?> ກີບ</h5>
-                              <p class="text-muted font-16 m-b-0" style="color:blue">ລາຍໄດ້ປະຈຳເດືອນ</p>
+                              <p class="font-16 m-b-0" style="color:blue">ລາຍໄດ້ປະຈຳເດືອນ</p>
                             </div>
                           </div>
                         </div>
@@ -172,12 +172,12 @@ session_start();
                           <div class="list-inline text-center">
                             <div class="list-inline-item p-r-30">
                             <?php 
-                               $query = mysqli_query($conn,"SELECT MONTHNAME(created_date) as mname, sum(price) as total FROM tb_order GROUP BY MONTH(created_date)");
+                               $query = mysqli_query($conn,"SELECT YEAR(created_date) as mname, sum(price) as total FROM tb_order GROUP BY YEAR(created_date)");
                                $fetchYear = mysqli_fetch_array($query);
                               ?>
                             <i class="fas fa-signal" style="font-size:30px; color:green"></i>
                               <h5 class="mb-0 m-b-0"><?php echo number_format($fetchYear['total'])?> ກີບ</h5>
-                              <p class="text-muted font-16 m-b-0" style="color:green">ລາຍໄດ້ປະຈຳປີ</p>
+                              <p class=" font-16 m-b-0" style="color:green">ລາຍໄດ້ປະຈຳປີ</p>
                             </div>
                           </div>
                         </div>
@@ -204,7 +204,7 @@ session_start();
                            <i class="fas fa-th"></i>
                         </div>
                         </th>
-                        <th>ລະຫັດສິນຄ້າ</th>
+                        <th>ລຳດັບ</th>
                         <th>ຊື່ສິນຄ້າ</th>
                         <th>ລະຫັດບາໂຄດ</th>
                         <th>ປະເພດສິນຄ້າ</th>
@@ -215,6 +215,7 @@ session_start();
                       </thead>
                       <tbody>
                         <?php
+                        $i=1;
                           include_once("config/connection.php");
                           $sql = "SELECT * FROM tb_ProductItem";
                           $query = $conn->query($sql);
@@ -228,7 +229,7 @@ session_start();
                                   <i class='fas fa-th'></i>
                                 </div>
                               </td>
-                              <td>". $row['id'] . "</td>
+                              <td>". $i. "</td>
                               <td>
                               <div>". $row['name'] . "</div>
                               </td>
@@ -248,8 +249,9 @@ session_start();
                                 <div class='badge badge-success'>". $row["created_date"] . "</div>
                               </td>
                             </tr>";
+                            $i++;
                             }
-                          
+                           
                           ?>
                     </tbody>
                     </table>

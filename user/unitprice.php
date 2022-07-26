@@ -24,7 +24,7 @@ include_once("config/connection.php");
                         <th class="text-center">
                           <i class="fas fa-th"></i>
                         </th>
-                        <th>ລະຫັດຫົວໜ່ວຍສິນຄ້າ</th>
+                        <th>ລຳດັບ</th>
                         <th>ຊື່ຫົວໜ່ວຍສິນຄ້າ</th>
                         <th>ເພີ່ມວັນທີ່ເດຶອນປີ</th>
                         <th>Action</th>
@@ -45,7 +45,7 @@ include_once("config/connection.php");
                               <i class='fas fa-th'></i>
                             </div>
                           </td>
-                          <td><?php echo $row["id"]; ?></td>
+                          <td><?php echo $count ?></td>
                           
                           <td>
                           <div><?php echo $row["unit_name"]; ?></div>
