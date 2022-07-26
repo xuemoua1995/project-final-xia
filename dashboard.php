@@ -146,12 +146,14 @@ session_start();
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                           <div class="list-inline text-center">
                             <div class="list-inline-item p-r-30">
+                             
+                            <i class="fas fa-signal" style="font-size:30px; color:red"></i>
+                              <h5 class="m-b-0">
                               <?php 
                                $query = mysqli_query($conn,"SELECT DATE(created_date), sum(price) as total FROM tb_order WHERE DATE(created_date) = DATE(NOW()) ORDER BY `id` DESC");
                                $fetchDaily = mysqli_fetch_array($query);
-                              ?>
-                            <i class="fas fa-signal" style="font-size:30px; color:red"></i>
-                              <h5 class="m-b-0"><?php echo number_format($fetchDaily['total'])?> ກີບ</h5>
+                               echo number_format($fetchDaily['total'])
+                              ?> ກີບ</h5>
                               <p class=" font-16 m-b-0" style="color:red">ລາຍໄດ້ປະຈຳວັນ</p>
                             </div>
                           </div>
@@ -159,12 +161,15 @@ session_start();
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                           <div class="list-inline text-center">
                             <div class="list-inline-item p-r-30">
-                            <?php 
+                           
+                            <i class="fas fa-signal" style="font-size:30px; color:blue"></i>
+                              <h5 class="m-b-0">
+                              <?php 
                                $query = mysqli_query($conn,"SELECT MONTHNAME(created_date) as mname, sum(price) as total FROM tb_order GROUP BY MONTH(created_date)");
                                $fetchMonth = mysqli_fetch_array($query);
+                               echo number_format($fetchMonth['total'])
                               ?>
-                            <i class="fas fa-signal" style="font-size:30px; color:blue"></i>
-                              <h5 class="m-b-0"><?php echo number_format($fetchMonth['total'])?> ກີບ</h5>
+                                 ກີບ</h5>
                               <p class="font-16 m-b-0" style="color:blue">ລາຍໄດ້ປະຈຳເດືອນ</p>
                             </div>
                           </div>
@@ -172,12 +177,15 @@ session_start();
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                           <div class="list-inline text-center">
                             <div class="list-inline-item p-r-30">
-                            <?php 
+                           
+                            <i class="fas fa-signal" style="font-size:30px; color:green"></i>
+                              <h5 class="mb-0 m-b-0">
+                              <?php 
                                $query = mysqli_query($conn,"SELECT YEAR(created_date) as mname, sum(price) as total FROM tb_order GROUP BY YEAR(created_date)");
                                $fetchYear = mysqli_fetch_array($query);
+                               echo number_format($fetchYear['total'])
                               ?>
-                            <i class="fas fa-signal" style="font-size:30px; color:green"></i>
-                              <h5 class="mb-0 m-b-0"><?php echo number_format($fetchYear['total'])?> ກີບ</h5>
+                                  ກີບ</h5>
                               <p class=" font-16 m-b-0" style="color:green">ລາຍໄດ້ປະຈຳປີ</p>
                             </div>
                           </div>

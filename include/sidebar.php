@@ -1,16 +1,5 @@
 
-<?php
 
-include_once("config/connection.php");
-$select = " SELECT * FROM tb_user";
-           
-$result = mysqli_query($conn, $select);
-
-if(mysqli_num_rows($result) > 0){
-
-  $row = mysqli_fetch_array($result);
-}
-?>
 <body>
   
   <div class="loader"></div>
