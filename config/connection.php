@@ -1,13 +1,13 @@
 <?php
-$server = "localhost:3306";
-$username = "root";
-$password = "";
-$database = "shop_pos";
-$port = 3306;
+$server = "remotemysql.com:3306";
+$username = "hVQWBJTceN";
+$password = "5beLVTmaTt";
+$database = "hVQWBJTceN";
+// $port = 3306;
 
 try{
      // Create connection database
-$conn =  mysqli_connect($server, $username, $password, $database,$port);
+$conn =  mysqli_connect($server, $username, $password, $database);
 
 // Check connection
 if (!$conn) {
