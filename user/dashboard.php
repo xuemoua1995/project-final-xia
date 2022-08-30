@@ -195,68 +195,73 @@ session_start();
                   <h4>ລາຍການສິນຄ້າເພີ່ມໃໝ່</h4>
                 </div>
                 <div class="card-body p-0">
-                  <div class="table-responsive">
-                    <table class="table table-striped table-hover" id="save-stage" style="width:100%;">
+                <div class="table-responsive">
+                  <table class="table table-striped table-hover" id="save-stage" style="width:100%;">
                     <thead>
                       <tr>
                         <th class="text-center">
-                        <div class="sort-handler">
-                           <i class="fas fa-th"></i>
-                        </div>
+                          <i class="fas fa-th"></i>
                         </th>
                         <th>ລຳດັບ</th>
                         <th>ຊື່ສິນຄ້າ</th>
-                        <th>ລະຫັດບາໂຄດ</th>
-                        <th>ປະເພດສິນຄ້າ</th>
+                        <th>ບາໂຄດ</th>
+                        <th>ປະເພດ</th>
+                        <th>ຫົວໜ່ວຍ</th>
+                        <th>ຈຳນວນ</th>
                         <th>ລາຄາຊື້</th>
                         <th>ລາຄາຂາຍ</th>
                         <th>ເພີ່ມວັນທີ່ເດຶອນປີ</th>
                       </tr>
-                      </thead>
-                      <tbody>
-                        <?php
-                        $i=1;
-                          include_once("config/connection.php");
-                          $sql = "SELECT * FROM tb_ProductItem";
-                          $query = $conn->query($sql);
-                        
-                            while($row =  $query->fetch_assoc()) {
-                              // $new_date = date("d/m/Y H:i:s", strtotime($row["created_date"]));
-                              echo "
-                              <tr>
-                              <td>
-                                <div class='sort-handler'>
-                                  <i class='fas fa-th'></i>
-                                </div>
-                              </td>
-                              <td>". $i. "</td>
-                              <td>
-                              <div>". $row['name'] . "</div>
-                              </td>
-                              <td>
-                              <div>". $row['barcode'] . "</div>
-                              </td>
-                              <td>
-                              <div>". $row['typename'] . "</div>
-                              </td>
-                              <td>
-                              <div>". number_format($row['buy_price']) . " ກີບ</div>
-                              </td>
-                              <td>
-                              <div>". number_format($row['sale_price']) . " ກີບ</div>
-                              </td>
-                              <td>
-                                <div class='badge badge-success'>". $row["created_date"] . "</div>
-                              </td>
-                            </tr>";
-                            $i++;
-                            }
-                           
+                    </thead>
+                    <tbody>
+                    <?php
+                    $count = 1;
+                      include_once("config/connection.php");
+                      $sql = "SELECT * FROM tb_ProductItem ORDER BY id DESC";
+                      $query = $conn->query($sql);
+                    
+                        while($row =  $query->fetch_assoc()) {
+                          // $new_date = date("d/m/Y H:i:s", strtotime($row["created_date"]));
                           ?>
+                          <tr>
+                          <td>
+                            <div class='sort-handler'>
+                              <i class='fas fa-th'></i>
+                            </div>
+                          </td>
+                          <td>
+                          <div><?php echo $count ?></div>
+                          </td>
+                          <td>
+                          <div><?php echo $row["name"]; ?></div>
+                          </td>
+                          <td>
+                          <div><?php echo $row["barcode"]; ?></div>
+                          </td>
+                          <td>
+                          <div><?php echo $row["typename"]; ?></div>
+                          </td>
+                          <td>
+                          <div><?php echo $row["unit_name"]; ?></div>
+                          </td>
+                          <td>
+                          <div><?php echo $row["qty"]; ?></div>
+                          </td>
+                          <td>
+                          <div><?php echo number_format($row["buy_price"]); ?> ກີບ</div>
+                          </td>
+                          <td>
+                          <div><?php echo number_format($row["sale_price"]); ?> ກີບ</div>
+                          </td>
+                          <td>
+                            <div class='badge badge-success'><?php echo $row["created_date"]; ?></div>
+                          </td>
+                        </tr>
+                        <?php $count++; } ?>
                     </tbody>
-                    </table>
-                  </div>
+                  </table>
                 </div>
+              </div>
               </div>
             </div>
           </div>

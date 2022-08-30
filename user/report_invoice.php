@@ -28,9 +28,8 @@ $total = 0;
           </div>
           </form>
           <div class="section-body">
-               <div class="invoice">
-                    
-                    <div class="invoice-print">
+               <div class="invoice" id="invoice">
+                    <div class="invoice-print" id="invoiceprint" style="padding:20px;">
                          <div style="margin:auto; width:600px">
                          <p style="text-align: center">ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ <br>
                          ສັນຕິພາບ ເອກະລາດ ປະຊາທິປະໄຕ ເອກະພາບ ວັດທະນາຖາວອນ
@@ -53,13 +52,13 @@ $total = 0;
                                    ໂທ: 020 2930 0013, 020 2930 0014, 030 481 9980
                                    </p>
                                    <div class="table-responsive">
-                                   <table class="table table-striped table-hover table-md">
-                                        <tr>
-                                             <th data-width="40">ລຳດັບ</th>
+                                   <table class="table table-striped table-hover table-md" style="width:100%">
+                                        <tr">
+                                             <th class="text-center" data-width="40">ລຳດັບ</th>
                                              <th>ລາຍການ</th>
-                                             <th class="text-center">ຈຳນວນ</th>
+                                             <th>ຈຳນວນ</th>
                                              <th class="text-center">ລາຄາ</th>
-                                             <th class="text-right">ຈຳນວນເງີນ</th>
+                                             <th style="float:right">ຈຳນວນເງີນ</th>
                                         </tr>
                                         <?php
                                         $i=1;
@@ -72,15 +71,15 @@ $total = 0;
                                         <tr>
                                              <th data-width="40"><?=$i?></th>
                                              <th><?=$pro['name']?></th>
-                                             <th class="text-center"><input type="number" class="iquantity" onchange="subTotal()" style="width:40px;border:none" value="<?=$re['qty']?>" disabled/></th>
+                                             <th><input type="number" class="iquantity" onchange="subTotal()" style="width:40px;border:none" value="<?=$re['qty']?>" disabled/></th>
                                              <th class="text-center"><?=number_format($re['price'])?> ກີບ <input type="hidden" class="iprice" value="<?=$re['price']?>"></th></th>
-                                             <th class="text-right itotal"></th>
+                                             <th class="text-right itotal" style="float:right"></th>
                                         </tr>
                                         <?php
                                         $i++;
                                         }
                                         }else{
-                                             echo "<span class='badge badge-danger'>ບໍມີຂໍ້ມູນ</span>";
+                                             echo "<span class='badge badge-danger'>ຍັງບໍມີຂໍ້ມູນ</span>";
                                         }
                                         
                                         ?>
@@ -90,9 +89,9 @@ $total = 0;
                                         <div class="col-lg-4">
                                         </div>
                                         <div class="col-lg-8 text-right">
-                                             <div class="invoice-detail-item">
-                                                  <div class="invoice-detail-value">ລວມເງີນ</div>
-                                                   <div class="invoice-detail-value invoice-detail-value-lg" style="color:black" id="total"></div>
+                                             <div class="invoice-detail-item" style="float:right">
+                                                  <div class="invoice-detail-value" style="font-size:22px; float:right;font-weight:bold">ລວມເງີນ</div>
+                                                   <div class="invoice-detail-value invoice-detail-value-lg" style="color:black;font-size:22px; font-weight:bold" id="total"></div>
                                              </div>
                                         </div>
                                    </div>

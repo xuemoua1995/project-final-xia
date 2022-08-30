@@ -4,7 +4,7 @@ include "include/topbar.php";
 include "include/sidebar.php";
 include_once("config/connection.php");
 
-$bc = $_GET['bc'];
+// $bc = $_GET['bc'];
 $total = 0;
 ?>
 <!-- Main Content -->
@@ -48,11 +48,12 @@ $total = 0;
                 </thead>
                 <tbody id="tb-showCart">
                   <?php
-                 
+                 $i;
                   $qry = qry("select * from tb_order where tb_state='1'");
                   while ($re = $qry->fetch_assoc()) {
                     // $new_date = date("d/m/Y H:i:s", strtotime($re["updated_date"]));
                     $pro = assoc("select * from tb_ProductItem where id = '$re[product_id]'");
+                    $i++;
                   ?>
                     <tr>
                       <td>
@@ -60,12 +61,12 @@ $total = 0;
                           <i class="fas fa-th"></i>
                         </div>
                       </td>
-                      <td><?=$pro['id']?></td>
+                      <td><?=$i?></td>
                       <td>
                         <div><?=$pro['name']?></div>
                       </td>
                       <td><?=number_format($re['price'])?> ກີບ <input type="hidden" class="iprice" value="<?=$re['price']?>"/></td>
-                      <td><input type="number" class="iquantity" onchange="subTotal()" style="width:40px" value="<?=$re['qty']?>"/></td>
+                      <td><input type="number" class="iquantity" onchange="subTotal()" style="width:40px" value="<?=$re['qty']?>" disabled/></td>
                       <td>
                         <div><?=$pro['unit_name']?></div>
                       </td>

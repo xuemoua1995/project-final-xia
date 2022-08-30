@@ -1,8 +1,10 @@
 <?php include('../config/connection.php'); ?>
 <?php
+$i=0;
 $qry = qry("select * from tb_order where tb_state='1'");
 while ($re = $qry->fetch_assoc()) {
 $pro = assoc("select * from tb_ProductItem where id = '$re[product_id]'");
+$i++;
 ?>
 <tr>
     <td>
@@ -10,12 +12,12 @@ $pro = assoc("select * from tb_ProductItem where id = '$re[product_id]'");
         <i class="fas fa-th"></i>
     </div>
     </td>
-    <td><?=$pro['id']?></td>
+    <td><?=$i?></td>
     <td>
     <div><?=$pro['name']?></div>
     </td>
-    <td><?=number_format($re['price'])?> ກີບ <input type="hidden" class="iprice" value="<?=$re['price']?>"/></td>
-    <td><input type="number" class="iquantity" onchange="subTotal()" style="width:40px" value="<?=$re['qty']?>"/></td>
+    <td><?=number_format($re['price'])?> ກີບ <input type="hidden" class="iprice" value="<?=$re['price']?>"disabled/></td>
+    <td><?=$re['qty']?> <input type="hidden" class="iquantity" onchange="subTotal()" style="width:40px" value="<?=$re['qty']?>"/></td>
     <td>
     <div><?=$pro['unit_name']?></div>
     </td>

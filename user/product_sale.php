@@ -48,11 +48,14 @@ $total = 0;
                 </thead>
                 <tbody id="tb-showCart">
                   <?php
-                 
+            
+                  $i;
                   $qry = qry("select * from tb_order where tb_state='1'");
                   while ($re = $qry->fetch_assoc()) {
+                  
                     // $new_date = date("d/m/Y H:i:s", strtotime($re["updated_date"]));
                     $pro = assoc("select * from tb_ProductItem where id = '$re[product_id]'");
+                    $i++;
                   ?>
                     <tr>
                       <td>
@@ -60,18 +63,19 @@ $total = 0;
                           <i class="fas fa-th"></i>
                         </div>
                       </td>
-                      <td><?=$pro['id']?></td>
+                      <td><?=$i?></td>
                       <td>
                         <div><?=$pro['name']?></div>
                       </td>
                       <td><?=number_format($re['price'])?> ກີບ <input type="hidden" class="iprice" value="<?=$re['price']?>"/></td>
-                      <td><input type="number" class="iquantity" onchange="subTotal()" style="width:40px" value="<?=$re['qty']?>"/></td>
+                      <td><?=$re['qty']?> <input type="hidden" class="iquantity" onchange="subTotal()" style="width:40px" value="<?=$re['qty']?>"/></td>
                       <td>
                         <div><?=$pro['unit_name']?></div>
                       </td>
                      
                       <td>
-                        <div class="itotal"></div>ກີບ
+                        <div class="itotal"></div> ກີບ
+                        
                       </td>
                       <td>
                         <a href='#' onclick="del('<?=$re['id']?>')" style='font-size:15px; color:red'><i class='far fa-trash-alt'></i> ລຶບ</a>
@@ -84,7 +88,7 @@ $total = 0;
                 </tbody>
               </table>
               <div style="width:100%;">
-              <h4 style="float:right;color:black;" id="total"></h4>
+              <h4 style="float:right;color:black;" id="total">ກີບ</h4>
               </div>
             </div>
             
@@ -109,10 +113,13 @@ $total = 0;
   }
   $("#form-bc").on("submit", function(ev) {
     ev.preventDefault();
+    debugger
     let data_s = $(this).serialize();
     $("#form-bc").LoadingOverlay('show');
     $.post("save-cart/save.php", data_s, function(res) {
       $("#form-bc").LoadingOverlay('hide')
+      console.log(res)
+      debugger
       if (res.state == 1) {
         $("#tb-showCart").load("save-cart/load-cart.php");
         $("#form-bc #bc").val('');
@@ -130,7 +137,7 @@ $total = 0;
       if (res.state == 1) {
         $("#tb-showCart").load("save-cart/load-cart.php");
       } else {
-        alert('ບໍ່ສາມາດດຳເນີນການໄດ້')
+       // alert('ບໍ່ສາມາດດຳເນີນການໄດ້')
       }
     },'JSON')
   }

@@ -45,7 +45,7 @@ else{
                             <div class="col-12 mb-3">
                                 <p>ຊື່ສິນຄ້າ</p>
                                 <select name="name" id="" class="form-control" required>
-                                   <option>ກະລຸນາເລືອກຊື່ສິນຄ້າກ່ອນ</option>
+                                   <option value="">ກະລຸນາເລືອກຊື່ສິນຄ້າກ່ອນ</option>
                                     <?php 
                                     $prods = mysqli_query($conn, "SELECT * FROM tb_ProductItem ORDER BY id DESC");
                                     foreach ($prods as $prod) {
@@ -61,7 +61,7 @@ else{
                             <div class="col-12 mb-3">
                                 <p>ຊື່ປະເພດສິນຄ້າ</p>
                                 <select name="typename" id="" class="form-control" required>
-                                   <option>ກະລຸນາເລືອກປະເພດສິນຄ້າກ່ອນ</option>
+                                   <option value="">ກະລຸນາເລືອກປະເພດສິນຄ້າກ່ອນ</option>
                                     <?php 
                                     $types = mysqli_query($conn, "SELECT * FROM tb_ProductType");
                                     foreach ($types as $type) {

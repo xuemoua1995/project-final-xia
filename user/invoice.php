@@ -25,21 +25,33 @@ $total = 0;
                          </div>
                          <div class="row mt-4">
                               <div class="col-md-12">
-                                   <p class="section-lead">ເລກທີ່: ....................................... <br>
-                                   ວັນທີ່: ....................................... <br>
+                                   <h5 class="section-lead">
+                                   <?php 
+                                        $invoices = mysqli_query($conn, "SELECT DISTINCT tb_state FROM tb_order where tb_state = 1 ORDER BY tb_state ASC");
+                                        foreach ($invoices as $invoice) {
+                                        ?>
+                                        <span>ໃບຮັບເງີນເລກທີ່: 000<?php echo $invoice['tb_state'];?></span>
+                                        <?php 
+                                        }
+                                        ?>
+                                   </h5>
+                                   <p class="section-lead"><?php
+                                        echo "ວັນທີ່: " . date("d/m/Y H:i:s");
+                                   ?></p>
+                                   <p class="section-lead">
                                    ອັດເອກະສານ ແລະ ເຄື່ອງໃຊ້ຫ້ອງການ <br>
                                         ບ້ານ ພັນຫຼວງ ນະຄອນຫຼວງພະບາງ ແຂວງ ຫຼວງພະບາງ (ຕໍ່ໜ້າ ມປ ພັນຫຼວງ)
                                    <br>
                                    ໂທ: 020 2930 0013, 020 2930 0014, 030 481 9980
                                    </p>
                                    <div class="table-responsive">
-                                   <table class="table table-striped table-hover table-md">
+                                   <table class="table table-striped table-hover table-md" style="width:100%">
                                         <tr>
                                              <th data-width="40">ລຳດັບ</th>
                                              <th>ລາຍການ</th>
                                              <th class="text-center">ຈຳນວນ</th>
                                              <th class="text-center">ລາຄາ</th>
-                                             <th class="text-right">ຈຳນວນເງີນ</th>
+                                             <th class="text-right" style="float:right">ຈຳນວນເງີນ</th>
                                         </tr>
                                         <?php
                                         $i=1;
@@ -52,7 +64,7 @@ $total = 0;
                                              <th><?=$pro['name']?></th>
                                              <th class="text-center"><input type="number" class="iquantity" onchange="subTotal()" style="width:40px;border:none" value="<?=$re['qty']?>" disabled/></th>
                                              <th class="text-center"><?=number_format($re['price'])?> ກີບ <input type="hidden" class="iprice" value="<?=$re['price']?>"></th></th>
-                                             <th class="text-right itotal"></th>
+                                             <th class="text-right itotal" style="float:right"></th>
                                         </tr>
                                         <?php
                                         $i++;
@@ -64,9 +76,9 @@ $total = 0;
                                         <div class="col-lg-4">
                                         </div>
                                         <div class="col-lg-8 text-right">
-                                             <div class="invoice-detail-item">
-                                                  <div class="invoice-detail-value">ລວມເງີນ</div>
-                                                   <div class="invoice-detail-value invoice-detail-value-lg" style="color:black" id="total"></div>
+                                             <div class="invoice-detail-item" style="float:right">
+                                                  <div class="invoice-detail-value" style="font-size:22px;font-weight:bold">ລວມເງີນ</div>
+                                                   <div class="invoice-detail-value invoice-detail-value-lg" style="color:black;font-size:22px;font-weight:bold"id="total"></div>
                                              </div>
                                         </div>
                                    </div>
@@ -91,10 +103,10 @@ $total = 0;
     $('button[type="submit"]').click(function () {
         var pageTitle = '',
             stylesheet = '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css',
-            win = window.open('', 'Print', 'width=100%,height=300');
+            win = window.open('', 'Print',);
         win.document.write('<html><head><title>' + pageTitle + '</title>' +
             '<link rel="stylesheet" href="' + stylesheet + '">' +
-            '</head><body>' + $('.invoice-print')[0].outerHTML + '</body></html>');
+            '</head><body>' + $('.invoice-print')[0].innerHTML + '</body></html>');
         win.document.close();
         win.print();
         win.close();

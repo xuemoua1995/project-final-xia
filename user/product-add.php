@@ -14,7 +14,7 @@ if(isset($_POST['save'])){
     $buy_price = $_POST['buy_price'];
     $sale_price = $_POST['sale_price'];
 
-    $sql = "INSERT INTO tb_ProductItem (name, barcode, typename, unit_name, qty, buy_price, sale_price) VALUES ('$name', '$barcode', '$typename', '$unit_id', '$qty', '$buy_price','$sale_price')";
+    $sql = "INSERT INTO tb_ProductItem (name, barcode, typename, unit_name, qty, buy_price, sale_price) VALUES ('$name', '$barcode', '$typename', '$unit_name', '$qty', '$buy_price','$sale_price')";
 
     //use for MySQLi OOP
     if($conn->query($sql)){
@@ -58,8 +58,8 @@ else{
                         <div class="form-row">
                             <div class="col-12 mb-3">
                                 <p>ຊື່ປະເພດສິນຄ້າ</p>
-                                <select name="typename" id="" class="form-control" required>
-                                   <option>ກະລຸນາເລືອກປະເພດສິນຄ້າກ່ອນ</option>
+                                <select name="typename" id="" class="form-control" required >
+                                   <option value="">ກະລຸນາເລືອກປະເພດສິນຄ້າກ່ອນ</option>
                                     <?php 
                                     $types = mysqli_query($conn, "SELECT * FROM tb_ProductType");
                                     foreach ($types as $type) {
@@ -75,7 +75,7 @@ else{
                             <div class="col-12 mb-3">
                                 <p>ຊື່ຫົວໜ່ວຍສິນຄ້າ</p>
                                 <select name="unit_name" id="" class="form-control" required>
-                                   <option>ກະລຸນາເລືອກຫົວໜ່ວຍສິນຄ້າກ່ອນ</option>
+                                   <option value="">ກະລຸນາເລືອກຫົວໜ່ວຍສິນຄ້າກ່ອນ</option>
                                     <?php 
                                     $units = mysqli_query($conn, "SELECT * FROM tb_unit");
                                     foreach ($units as $unit) {
@@ -105,10 +105,8 @@ else{
                                 <input type="text" name="sale_price" class="form-control" required />
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> ຍົກເລີກ</button>
-                    <button type="submit" name="save" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> ບັນທຶກ</a>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> ຍົກເລີກ</button>
+                        <input type="submit" name="save" value="ບັນທຶກ" class="btn btn-primary"/>
                     </form>
 			    </div>
 			</div>
